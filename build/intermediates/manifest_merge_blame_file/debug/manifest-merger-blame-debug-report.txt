@@ -1,0 +1,440 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.storescontrol.hlqc"
+4    android:versionCode="1"
+5    android:versionName="1.0.9" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="14"
+8-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+11-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:83:5-71
+11-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:83:22-68
+12    <uses-permission android:name="android.permission.READ_PROFILE" />
+12-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:84:5-71
+12-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:84:22-68
+13    <uses-permission android:name="android.permission.READ_CONTACTS" />
+13-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:85:5-72
+13-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:85:22-69
+14    <uses-permission android:name="android.permission.CAMERA" />
+14-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:86:5-65
+14-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:86:22-62
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:87:5-67
+15-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:87:22-64
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:88:5-66
+16-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:88:22-63
+17    <uses-permission android:name="android.permission.FLASHLIGHT" />
+17-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:89:5-69
+17-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:89:22-66
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:90:5-81
+18-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:90:22-78
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:91:5-80
+19-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:91:22-77
+20    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+20-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:92:5-75
+20-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:92:22-72
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:93:5-79
+21-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:93:22-76
+22    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 蓝牙权限 -->
+22-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:94:5-76
+22-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:94:22-73
+23    <uses-permission android:name="android.permission.READ_LOGS" />
+23-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:95:5-68
+23-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:95:22-65
+24    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 安卓6蓝牙权限，必须打开定位权限 -->
+24-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:96:5-83
+24-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:96:22-80
+25    <uses-permission android:name="android.permission.BLUETOOTH" />
+25-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:97:5-68
+25-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:97:22-65
+26    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+26-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:98:5-74
+26-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:98:22-71
+27    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+27-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:99:5-81
+27-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:99:22-78
+28    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+28-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:100:5-79
+28-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:100:22-76
+29    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+29-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:101:5-89
+29-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:101:22-86
+30    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+30-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:102:5-79
+30-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:102:22-76
+31    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+31-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:103:5-78
+31-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:103:22-75
+32    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+32-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:105:5-84
+32-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:105:22-81
+33    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+33-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:9:5-76
+33-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:9:22-73
+34    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+34-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:11:5-81
+34-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:11:22-78
+35    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- 自定义权限 -->
+35-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:14:5-68
+35-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:14:22-65
+36    <uses-permission android:name="getui.permission.GetuiService.com.example.storescontrol.hlqc" />
+36-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:16:5-86
+36-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:16:22-83
+37
+38    <permission
+38-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:18:5-20:44
+39        android:name="getui.permission.GetuiService.com.example.storescontrol.hlqc"
+39-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:19:9-70
+40        android:protectionLevel="normal" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+40-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:20:9-41
+41    <uses-feature
+41-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:25:5-27:36
+42        android:name="android.hardware.camera"
+42-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:26:9-47
+43        android:required="false" />
+43-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:27:9-33
+44    <uses-feature
+44-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:28:5-30:36
+45        android:name="android.hardware.camera.front"
+45-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:29:9-53
+46        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+46-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:30:9-33
+47    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+48    <uses-feature
+48-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:33:5-35:36
+49        android:name="android.hardware.camera.autofocus"
+49-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:34:9-57
+50        android:required="false" />
+50-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:35:9-33
+51    <uses-feature
+51-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:36:5-38:36
+52        android:name="android.hardware.camera.flash"
+52-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:37:9-53
+53        android:required="false" />
+53-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:38:9-33
+54    <uses-feature
+54-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:39:5-41:36
+55        android:name="android.hardware.screen.landscape"
+55-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:40:9-57
+56        android:required="false" />
+56-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:41:9-33
+57    <uses-feature
+57-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:42:5-44:36
+58        android:name="android.hardware.wifi"
+58-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:43:9-45
+59        android:required="false" />
+59-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:44:9-33
+60
+61    <application
+61-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:6:5-82:19
+62        android:name="com.example.storescontrol.view.BaseApplication"
+62-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:7:9-45
+63        android:allowBackup="true"
+63-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:8:9-35
+64        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+64-->[com.android.support:support-compat:28.0.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\dd1cf78f22bdd94f550130b281f27c97\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+65        android:debuggable="true"
+66        android:hardwareAccelerated="true"
+66-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:9:9-43
+67        android:icon="@mipmap/ic_ld"
+67-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:10:9-37
+68        android:label="@string/app_name"
+68-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:11:9-41
+69        android:networkSecurityConfig="@xml/network_security_config"
+69-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:12:9-69
+70        android:roundIcon="@mipmap/ic_ld"
+70-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:13:9-42
+71        android:screenOrientation="portrait"
+71-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:14:9-45
+72        android:supportsRtl="true"
+72-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:15:9-35
+73        android:theme="@style/AppTheme.NoActionBar"
+73-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:16:9-52
+74        android:usesCleartextTraffic="true" >
+74-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:25:18-53
+75        <activity android:name="com.example.storescontrol.view.task.TaskListActivity" />
+75-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:17:9-73
+75-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:17:19-61
+76        <activity android:name="com.example.storescontrol.view.task.TaskActivity" /> <!-- 配置APP ID -->
+76-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:18:9-60
+76-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:18:19-57
+77        <activity
+77-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:19:9-22:64
+78            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+78-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:20:13-66
+79            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+79-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:21:13-81
+80            android:theme="@android:style/Theme.Translucent" /> <!-- 配置APP版本号 -->
+80-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:22:13-61
+81        <activity android:name="com.example.storescontrol.view.LoginActivity" >
+81-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:23:9-31:20
+81-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:23:19-53
+82            <intent-filter>
+82-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:26:13-30:29
+83                <action android:name="android.intent.action.MAIN" />
+83-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:27:17-69
+83-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:27:25-66
+84
+85                <category android:name="android.intent.category.LAUNCHER" />
+85-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:29:17-77
+85-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:29:27-74
+86            </intent-filter>
+87        </activity> <!-- 配置APP渠道号 -->
+88        <!-- 配置Bugly调试模式（true或者false） -->
+89        <activity android:name="com.example.storescontrol.view.PortActivity" />
+89-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:33:9-55
+89-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:33:19-52
+90        <activity android:name="com.example.storescontrol.view.IndexActivity" />
+90-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:34:9-56
+90-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:34:19-53
+91        <activity android:name="com.example.storescontrol.view.ScanActivity" />
+91-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:35:9-55
+91-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:35:19-52
+92        <activity android:name="com.example.storescontrol.view.PutListActivity" />
+92-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:36:9-58
+92-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:36:19-55
+93        <activity
+93-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:37:9-39:73
+94            android:name="com.example.storescontrol.view.ProductionwarehousingActivity"
+94-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:38:13-63
+95            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+95-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:39:13-70
+96        <activity android:name="com.example.storescontrol.view.ProductionListActivity" />
+96-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:40:9-65
+96-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:40:19-62
+97        <activity android:name="com.example.storescontrol.view.DetailListActivity" />
+97-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:41:9-61
+97-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:41:19-58
+98        <activity android:name="com.example.storescontrol.view.StockcheckActivity" />
+98-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:42:9-61
+98-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:42:19-58
+99        <activity android:name="com.example.storescontrol.view.sale.DispatchActivity" />
+99-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:43:9-64
+99-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:43:19-61
+100        <activity android:name="com.example.storescontrol.view.sale.SaleActivity" />
+100-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:44:9-60
+100-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:44:19-57
+101        <activity android:name="com.example.storescontrol.view.PrintActivity" />
+101-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:45:9-56
+101-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:45:19-53
+102        <activity android:name="com.example.storescontrol.view.declaration.ReportActivity" />
+102-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:46:9-69
+102-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:46:19-66
+103        <activity
+103-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:47:9-49:73
+104            android:name="com.example.storescontrol.view.declaration.MaterialActivity"
+104-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:48:13-62
+105            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+105-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:49:13-70
+106
+107        <meta-data
+107-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:51:9-53:42
+108            android:name="BUGLY_APPID"
+108-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:52:13-39
+109            android:value="8a29361815" />
+109-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:53:13-39
+110        <meta-data
+110-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:54:9-56:35
+111            android:name="BUGLY_APP_VERSION"
+111-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:55:13-45
+112            android:value="1.0" />
+112-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:56:13-32
+113        <meta-data
+113-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:57:9-59:36
+114            android:name="BUGLY_ENABLE_DEBUG"
+114-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:58:13-46
+115            android:value="true" />
+115-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:59:13-33
+116
+117        <provider
+117-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:61:9-69:20
+118            android:name="android.support.v4.content.FileProvider"
+118-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:62:13-67
+119            android:authorities="hlqc.storescontrol.fileprovider"
+119-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:63:13-66
+120            android:exported="false"
+120-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:64:13-37
+121            android:grantUriPermissions="true" >
+121-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:65:13-47
+122            <meta-data
+122-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:66:13-68:54
+123                android:name="android.support.FILE_PROVIDER_PATHS"
+123-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:67:17-67
+124                android:resource="@xml/file_paths" />
+124-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:68:17-51
+125        </provider>
+126
+127        <service
+127-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:70:9-71:71
+128            android:name="com.example.storescontrol.service.DemoIntentService"
+128-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:70:18-59
+129            android:permission="android.permission.BIND_JOB_SERVICE" />
+129-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:71:13-69
+130
+131        <!-- 配置SDK核心服务 -->
+132        <!-- process必须指定为":pushservice"，切勿随意更改 -->
+133        <service
+133-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:75:9-80:19
+134            android:name="com.example.storescontrol.service.DemoPushService"
+134-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:76:13-52
+135            android:exported="true"
+135-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:77:13-36
+136            android:label="PushService"
+136-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:78:13-40
+137            android:process=":pushservice" >
+137-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:79:13-43
+138        </service>
+139
+140        <!-- 配置的第三⽅方参数属性 -->
+141        <meta-data
+141-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:28:9-30:47
+142            android:name="PUSH_APPID"
+142-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:29:13-38
+143            android:value="WYqzd2Vb08AMUt06Ah7aY3" />
+143-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:30:13-44
+144        <meta-data
+144-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:31:9-33:48
+145            android:name="PUSH_APPKEY"
+145-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:32:13-39
+146            android:value="fmnJ4TcZw69ZQVTaELdcH7" />
+146-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:33:13-45
+147        <meta-data
+147-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:34:9-36:51
+148            android:name="PUSH_APPSECRET"
+148-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:35:13-42
+149            android:value="CBsUpwsGnA86jJ2gCYDVe6" /> <!-- 配置SDK核⼼心服务 -->
+149-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:36:13-48
+150        <service
+150-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:38:9-47:19
+151            android:name="com.igexin.sdk.PushService"
+151-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:39:13-54
+152            android:exported="false"
+152-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:40:13-37
+153            android:label="NotificationCenter"
+153-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:41:13-47
+154            android:permission="android.permission.BIND_JOB_SERVICE"
+154-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:42:13-69
+155            android:process=":pushservice" >
+155-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:43:13-43
+156            <intent-filter>
+156-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:44:13-46:29
+157                <action android:name="com.igexin.sdk.action.service.message" />
+157-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:45:17-80
+157-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:45:25-77
+158            </intent-filter>
+159        </service>
+160
+161        <receiver android:name="com.igexin.sdk.PushReceiver" >
+161-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:49:9-59:20
+161-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:49:19-61
+162            <intent-filter>
+162-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:50:13-58:29
+163                <action android:name="android.intent.action.BOOT_COMPLETED" />
+163-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:51:17-79
+163-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:51:25-76
+164                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+164-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:52:17-79
+164-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:52:25-76
+165                <action android:name="android.intent.action.USER_PRESENT" />
+165-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:53:17-77
+165-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:53:25-74
+166                <!-- 以下三项为可选的action声明，可⼤大⼤大提⾼高service存活率和消息到达速度 -->
+167                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+167-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:55:17-78
+167-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:55:25-75
+168                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+168-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:56:17-87
+168-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:56:25-84
+169                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+169-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:57:17-90
+169-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:57:25-87
+170            </intent-filter>
+171        </receiver>
+172
+173        <activity
+173-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:61:9-67:75
+174            android:name="com.igexin.sdk.PushActivity"
+174-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:62:13-55
+175            android:excludeFromRecents="true"
+175-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:63:13-46
+176            android:exported="false"
+176-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:64:13-37
+177            android:process=":pushservice"
+177-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:65:13-43
+178            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+178-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:66:13-67
+179            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+179-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:67:13-72
+180        <activity
+180-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:68:9-74:75
+181            android:name="com.igexin.sdk.GActivity"
+181-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:69:13-52
+182            android:excludeFromRecents="true"
+182-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:70:13-46
+183            android:exported="true"
+183-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:71:13-36
+184            android:process=":pushservice"
+184-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:72:13-43
+185            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+185-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:73:13-67
+186            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+186-->[com.getui:sdk:2.13.3.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\0d72b0ab10666d0dc20487996d5ebf7a\sdk-2.13.3.0\AndroidManifest.xml:74:13-72
+187        <activity
+187-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:47:9-53:63
+188            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+188-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:48:13-74
+189            android:clearTaskOnLaunch="true"
+189-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:49:13-45
+190            android:screenOrientation="sensorLandscape"
+190-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:50:13-56
+191            android:stateNotNeeded="true"
+191-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:51:13-42
+192            android:theme="@style/zxing_CaptureTheme"
+192-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:52:13-54
+193            android:windowSoftInputMode="stateAlwaysHidden" />
+193-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\6e2f54d5c4082474355c055c0035a6d7\zxing-android-embedded-3.6.0\AndroidManifest.xml:53:13-60
+194
+195        <provider
+195-->[com.squareup.picasso:picasso:2.71828] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\9f3a5d95a9efec40961bdabf3dd85d40\picasso-2.71828\AndroidManifest.xml:8:9-11:40
+196            android:name="com.squareup.picasso.PicassoProvider"
+196-->[com.squareup.picasso:picasso:2.71828] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\9f3a5d95a9efec40961bdabf3dd85d40\picasso-2.71828\AndroidManifest.xml:9:13-64
+197            android:authorities="com.example.storescontrol.hlqc.com.squareup.picasso"
+197-->[com.squareup.picasso:picasso:2.71828] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\9f3a5d95a9efec40961bdabf3dd85d40\picasso-2.71828\AndroidManifest.xml:10:13-72
+198            android:exported="false" /> <!-- Custom FileProvider for 7.x -->
+198-->[com.squareup.picasso:picasso:2.71828] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\9f3a5d95a9efec40961bdabf3dd85d40\picasso-2.71828\AndroidManifest.xml:11:13-37
+199        <provider
+199-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:27:9-37:20
+200            android:name="com.tencent.bugly.beta.utils.BuglyFileProvider"
+200-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:28:13-74
+201            android:authorities="com.example.storescontrol.hlqc.fileProvider"
+201-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:29:13-64
+202            android:exported="false"
+202-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:30:13-37
+203            android:grantUriPermissions="true" >
+203-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:31:13-47
+204            <meta-data
+204-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:66:13-68:54
+205                android:name="android.support.FILE_PROVIDER_PATHS"
+205-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:67:17-67
+206                android:resource="@xml/provider_paths" />
+206-->C:\Users\curry\appliation\hlqc-master\src\main\AndroidManifest.xml:68:17-51
+207        </provider> <!-- 配置tinker合成结果service -->
+208        <service
+208-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:39:9-42:72
+209            android:name="com.tencent.bugly.beta.tinker.TinkerResultService"
+209-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:40:13-77
+210            android:exported="false"
+210-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:41:13-37
+211            android:permission="android.permission.BIND_JOB_SERVICE" />
+211-->[com.tencent.bugly:crashreport_upgrade:1.4.2] C:\Users\curry\.gradle\caches\transforms-2\files-2.1\7d23d75801ff5c375dece85432102d82\crashreport_upgrade-1.4.2\AndroidManifest.xml:42:13-69
+212    </application>
+213
+214</manifest>

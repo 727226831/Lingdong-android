@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_margin="@dimen/layout_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+
+            android:id="@+id/l_task"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:background="@mipmap/ic_redtag"
+                android:layout_alignParentRight="true"
+                android:id="@+id/iv_tag"
+                android:layout_width="10dp"
+                android:layout_height="10dp"/>
+            <ImageView
+                android:background="@mipmap/ic_unread"
+                android:layout_centerVertical="true"
+                android:id="@+id/ic_state"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_toRightOf="@id/l_task"
+            android:id="@+id/l_input"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@mipmap/ic_round"
+                android:id="@+id/tv_number"
+                android:text="1"
+                android:src="@mipmap/ic_picture"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:id="@+id/tv_S_QuotationID"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_S_RegisterDate"
+                    android:layout_weight="1"
+                    android:text="时间"
+                    style="@style/item_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_S_InvVersion"
+                        android:layout_weight="1"
+                        android:text="内核版本号"
+                        style="@style/item_small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_S_Verifyer"
+                        android:layout_weight="1"
+                        android:text="责任销售"
+                        style="@style/item_small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_R_RecordCompany"
+                    android:layout_weight="1"
+                    android:text="备案客户"
+                    style="@style/item_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_M_MSN"
+                    android:layout_weight="1"
+                    android:text="供应商"
+                    style="@style/item_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+
+                    android:text="产品型号"
+                    android:layout_weight="1"
+                    android:id="@+id/tv_S_InvName"
+                    style="@style/item_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_S_State"
+                        android:text="状态"
+                        android:layout_weight="1"
+                        style="@style/item_small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
