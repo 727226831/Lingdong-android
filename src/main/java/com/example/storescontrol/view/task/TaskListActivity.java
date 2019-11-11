@@ -216,7 +216,7 @@ public class TaskListActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(@NonNull final FunctionAdapter.VH vh, final int i) {
 
-            vh.textViewtag.setText(i+1+"");
+
 
             vh.textViewS_QuotationID.setText(mDatas.get(i).getS_QuotationID());
             vh.textViewS_RegisterDate.setText("时间："+mDatas.get(i).getS_RegisterDate());
@@ -230,6 +230,7 @@ public class TaskListActivity extends BaseActivity {
 
             if(sharedPreferences.getBoolean(mDatas.get(i).getS_QuotationID(),false)){
                 vh.imageViewTag.setVisibility(View.GONE);
+                vh.textViewtag.setVisibility(View.GONE);
             }else {
 
                 vh.imageViewTag.setVisibility(View.VISIBLE);
@@ -278,7 +279,7 @@ public class TaskListActivity extends BaseActivity {
             public VH(@NonNull View itemView) {
                 super(itemView);
                 linearLayout=itemView.findViewById(R.id.l_input);
-                textViewtag=itemView.findViewById(R.id.tv_number);
+                textViewtag=itemView.findViewById(R.id.tv_tag);
                 textViewS_QuotationID=itemView.findViewById(R.id.tv_S_QuotationID);
                 textViewR_RecordCompany=itemView.findViewById(R.id.tv_R_RecordCompany);
                 textViewS_InvName=itemView.findViewById(R.id.tv_S_InvName);

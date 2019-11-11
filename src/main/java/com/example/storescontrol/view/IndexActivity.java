@@ -28,7 +28,7 @@ public class IndexActivity extends BaseActivity {
 
     RecyclerView recyclerView;
     FunctionAdapter functionAdapter;
-    TextView titleTv;
+    TextView titleTv,textViewExit;
     LoginBean userinfoBean;
     ActivityIndexBinding binding;
 
@@ -45,22 +45,28 @@ public class IndexActivity extends BaseActivity {
         }
 
         binding.setUser(userinfoBean);
-        binding.tvUsername.setText(userinfoBean.getUsername()+"("+userinfoBean.getAcccode()+")");
+
 
         titleTv=binding.getRoot().findViewById(R.id.tv_title);
         titleTv.setText("首页");
+
+        textViewExit=binding.getRoot().findViewById(R.id.tv_exit);
+        textViewExit.setVisibility(View.VISIBLE);
+
+
 
         functionAdapter=new FunctionAdapter();
         recyclerView=findViewById(R.id.rv_function);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(functionAdapter);
-        binding.bExit.setOnClickListener(new View.OnClickListener() {
+        textViewExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(IndexActivity.this,LoginActivity.class));
                 IndexActivity.this.finish();
             }
         });
+
     }
 
 

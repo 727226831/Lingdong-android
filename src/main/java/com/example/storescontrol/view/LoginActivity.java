@@ -44,8 +44,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
        activityLoginBinding=DataBindingUtil.setContentView(this,R.layout.activity_login);
 
-        titleTv=activityLoginBinding.getRoot().findViewById(R.id.tv_title);
-        titleTv.setText(getResources().getText(R.string.app_name));
+
         SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
 
         activityLoginBinding.cbRemember.setChecked(sharedPreferences.getBoolean("isChecked",true));

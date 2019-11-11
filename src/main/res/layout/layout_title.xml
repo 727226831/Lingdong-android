@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:background="@color/black"
+    android:background="@color/blue"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="40dp">
 <ImageButton
@@ -19,4 +19,24 @@
     android:text="title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
+    <TextView
+        android:visibility="gone"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:id="@+id/tv_exit"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="退出"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/b_button"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:background="@mipmap/search"
+        android:layout_alignParentRight="true"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
 </RelativeLayout>

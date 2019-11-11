@@ -14,7 +14,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".view.task.TaskListActivity"></activity>
+        <activity android:name=".view.task.TaskListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
+            ></activity>
         <activity android:name=".view.task.TaskActivity" /> <!-- 配置APP ID -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

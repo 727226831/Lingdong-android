@@ -16,10 +16,9 @@ android {
         }
 
         applicationId "com.example.storescontrol.hlqc"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        //ar 1.0.9  hlqc 1.1.2 wkf1.1.2 LD1.0.9
         versionName "1.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [

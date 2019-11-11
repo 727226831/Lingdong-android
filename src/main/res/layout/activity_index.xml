@@ -15,7 +15,7 @@
             android:id="@+id/l_title"
             layout="@layout/layout_title"/>
         <RelativeLayout
-            android:background="@color/black"
+           android:background="@color/blue"
             android:padding="10dp"
             android:gravity="center_vertical"
             android:orientation="vertical"
@@ -28,29 +28,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:text="@{user.username}"
+                    android:textSize="16dp"
                     android:textColor="@color/white"
                     android:id="@+id/tv_username"
                     style="@style/textview"
                     />
+                <LinearLayout
+                    style="@style/line_white"/>
                 <TextView
+                    android:textSize="16dp"
                     android:textColor="@color/white"
                     android:id="@+id/tv_accname"
                     android:text="@{user.accname}"
                     style="@style/textview"/>
-                <LinearLayout
-                    style="@style/line"></LinearLayout>
-            </LinearLayout>
-            <Button
 
-                android:layout_centerVertical="true"
-                android:id="@+id/b_exit"
-                android:layout_margin="10dp"
-                android:layout_alignParentRight="true"
-                android:background="@color/blue"
-                android:textColor="@color/white"
-                android:text="退出"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+            </LinearLayout>
+
         </RelativeLayout>
 
         <LinearLayout
