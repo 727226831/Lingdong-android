@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.storescontrol.service.DemoIntentService;
 import com.example.storescontrol.service.DemoPushService;
@@ -20,7 +21,7 @@ public class BaseApplication extends Application {
 
     private static DemoHandler handler;
     public static StringBuilder payloadData = new StringBuilder();
-
+    public static LoginActivity demoActivity;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -35,28 +36,7 @@ public class BaseApplication extends Application {
 
     }
 
-    private static String getProcessName(int pid) {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader("/proc/" + pid + "/cmdline"));
-            String processName = reader.readLine();
-            if (!TextUtils.isEmpty(processName)) {
-                processName = processName.trim();
-            }
-            return processName;
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException exception) {
-                exception.printStackTrace();
-            }
-        }
-        return null;
-    }
+
     public static void sendMessage(Message msg) {
         handler.sendMessage(msg);
     }
@@ -65,15 +45,26 @@ public class BaseApplication extends Application {
 
         @Override
         public void handleMessage(Message msg) {
+            Log.i("message",msg.obj.toString());
             switch (msg.what) {
                 case 0:
                     payloadData.append((String) msg.obj);
                     payloadData.append("\n");
+                    if (demoActivity != null) {
+
+//                        if (GetuiSdkDemoActivity.tLogView != null) {
+//                            GetuiSdkDemoActivity.tLogView.append(msg.obj + "\n");
+//                        }
+                    }
 
                     break;
 
                 case 1:
-
+                    if (demoActivity != null) {
+//                        if (GetuiSdkDemoActivity.tLogView != null) {
+//                            GetuiSdkDemoActivity.tView.setText((String) msg.obj);
+//                        }
+                    }
                     break;
             }
         }

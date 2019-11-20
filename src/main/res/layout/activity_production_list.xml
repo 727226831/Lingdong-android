@@ -11,6 +11,7 @@
         layout="@layout/layout_title"/>
 
     <android.support.design.widget.TabLayout
+        android:background="@color/white"
         app:tabSelectedTextColor="@color/blue"
         app:tabIndicatorColor="@color/blue"
         android:id="@+id/tl_title"
@@ -33,6 +34,7 @@
     </android.support.design.widget.TabLayout>
 
   <EditText
+
       android:singleLine="true"
       android:hint="请输入搜索内容"
       android:id="@+id/et_search"

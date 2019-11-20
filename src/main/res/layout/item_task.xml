@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <RelativeLayout
-        android:layout_margin="@dimen/layout_margin"
+        android:background="@color/white"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -98,7 +99,7 @@
                 <TextView
                     android:id="@+id/tv_M_MSN"
                     android:layout_weight="1"
-                    android:text="供应商"
+                    android:text="代理商"
                     style="@style/item_small"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

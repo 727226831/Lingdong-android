@@ -21,6 +21,7 @@ import com.example.storescontrol.bean.LoginBean;
 import com.example.storescontrol.databinding.ActivityIndexBinding;
 import com.example.storescontrol.view.declaration.ReportActivity;
 import com.example.storescontrol.view.sale.DispatchActivity;
+import com.example.storescontrol.view.sampleapplication.SampleTypeActivity;
 import com.example.storescontrol.view.task.TaskListActivity;
 import com.google.gson.Gson;
 
@@ -115,6 +116,8 @@ public class IndexActivity extends BaseActivity {
                         intent  =new Intent(IndexActivity.this,ReportActivity.class);
                     }else if(userinfoBean.getData().get(i).getMenuname().equals("待审批任务")){
                         intent  =new Intent(IndexActivity.this, TaskListActivity.class);
+                    }else if(userinfoBean.getData().get(i).getMenuname().equals("样品申请")){
+                        intent  =new Intent(IndexActivity.this, SampleTypeActivity.class);
                     }
                     intent.putExtra("menuname",userinfoBean.getData().get(i).getMenuname());
 
@@ -134,6 +137,8 @@ public class IndexActivity extends BaseActivity {
             }else if(userinfoBean.getData().get(i).getMenuname().contains("调整")){
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_dbrk);
             }else if(userinfoBean.getData().get(i).getMenuname().contains("待审批")){
+                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_inventory);
+            }else if(userinfoBean.getData().get(i).getMenuname().contains("样品申请")){
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_inventory);
             }
             vh.funcationButton.setCompoundDrawablesWithIntrinsicBounds(null,
