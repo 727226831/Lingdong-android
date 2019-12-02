@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="bean"
+            type="com.example.storescontrol.bean.SampleApplicationBean.Product" />
+    </data>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.storescontrol.view.sampleapplication.IssueApplicationActivity">
+    tools:context="com.example.storescontrol.view.sampleapplication.OrderDetailActivity">
     <include
         android:id="@+id/l_title"
         layout="@layout/layout_title"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -20,9 +29,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="产品系列"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:text="请选择"
+                    style="@style/Text_selector"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
                     android:id="@+id/tv_key"
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="MM32F031系列"
+                    android:text="产品型号"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,85 +68,13 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="MM32SPIN系列"
-                    style="@style/item_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
-
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-
-                    android:layout_margin="@dimen/layout_margin"
-                    android:text="MM32F032系列"
-                    style="@style/item_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
-
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-
-                    android:layout_margin="@dimen/layout_margin"
-                    android:text="MM32WO系列"
-                    style="@style/item_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
-
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-
-                    android:layout_margin="@dimen/layout_margin"
-                    android:text="特编系列"
-                    style="@style/item_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
-
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-
-                    android:layout_margin="@dimen/layout_margin"
-                    android:text="申请数量（颗）"
+                    android:text="内核版本号"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <EditText
-                    android:hint="请输入数字"
+                    android:hint=""
                     style="@style/Edittext_right"
                     />
             </RelativeLayout>
@@ -128,13 +84,13 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="项目应用"
+                    android:text="申请批号"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <EditText
-                    android:hint="必填"
+                    android:hint=""
                     style="@style/Edittext_right"
                     />
             </RelativeLayout>
@@ -144,13 +100,99 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="实际使用物料型号"
+                    android:text="仓库"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <EditText
-                    android:hint="请输入"
+                    android:hint=""
+                    style="@style/Edittext_right"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="申请数量"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <EditText
+                    android:hint="颗"
+                    style="@style/Edittext_right"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="应用领域"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:text="请选择"
+                    style="@style/Text_selector"
+
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="应用描述"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:text="请选择"
+                    style="@style/Text_selector"
+
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="实际需求产品型号"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:text="请选择"
+                    style="@style/Text_selector"
+
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="实际需求内核版本"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <EditText
+                    android:hint=""
                     style="@style/Edittext_right"
                     />
             </RelativeLayout>
@@ -166,7 +208,7 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
-                    android:hint="请输入"
+                    android:hint=""
                     style="@style/Edittext_right"
                     />
             </RelativeLayout>
@@ -176,13 +218,13 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="预期价格"
+                    android:text="预计价格"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <EditText
-                    android:hint="请输入"
+                    android:hint=""
                     style="@style/Edittext_right"
                     />
             </RelativeLayout>
@@ -195,6 +237,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 </LinearLayout>
+</layout>

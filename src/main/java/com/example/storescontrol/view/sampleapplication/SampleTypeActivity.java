@@ -29,18 +29,19 @@ public class SampleTypeActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             Intent intent=null;
+            intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
             switch (v.getId()){
                 case R.id.l_one:
-                    intent=new Intent(SampleTypeActivity.this,SampleApplationActivity.class);
                     intent.putExtra("menuname","MCU销售订单申请");
+                    intent.putExtra("type","YP");
                     break;
                 case R.id.l_two:
-                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                     intent.putExtra("menuname","MCU工程品发放申请");
+                    intent.putExtra("type","GC");
                     break;
                 case R.id.l_three:
-                    intent=new Intent(SampleTypeActivity.this, DkApplicationActivity.class);
                     intent.putExtra("menuname","MM32-Motor-DK申请");
+                    intent.putExtra("type","");
                     break;
 
 

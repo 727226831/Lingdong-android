@@ -34,6 +34,22 @@ public class Request {
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
         iUrl login = retrofit.create(iUrl.class);
         retrofit2.Call<ResponseBody> data = login.getMessage(body);
+        Log.i("url-->",data.request().url().toString());
+        return  data;
+    }
+    public static Call<ResponseBody> requestbody(String obj) {
+
+        OkHttpClient client = new OkHttpClient.Builder().
+                connectTimeout(120, TimeUnit.SECONDS).
+                readTimeout(120, TimeUnit.SECONDS).
+                writeTimeout(120, TimeUnit.SECONDS).build();
+
+        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl("http://47.103.60.28:8090").build();
+
+        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
+        iUrl login = retrofit.create(iUrl.class);
+        retrofit2.Call<ResponseBody> data = login.getMessage(body);
+        Log.i("url-->",data.request().url().toString());
         return  data;
     }
 }

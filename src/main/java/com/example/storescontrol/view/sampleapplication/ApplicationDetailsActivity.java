@@ -13,6 +13,6 @@ public class ApplicationDetailsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application_details);
-        Untils.initTitle(getIntent().getStringExtra("menuname"),this);
+        Untils.initTitle("工程品",this);
     }
 }

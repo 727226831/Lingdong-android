@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="bean"
+            type="com.example.storescontrol.bean.SampleApplicationBean.Product" />
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,51 +27,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_key"
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="Motor-DK板"
+                    android:text="产品型号"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <TextView
+                    android:hint="请选择"
+                    android:text="@{bean.s_InvName}"
                     android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
 
+                    style="@style/Text_selector"
+                    android:id="@+id/tv_model"
                     />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="Motor-DK转接板"
+                    android:text="内核版本号"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
                 <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
+                    android:text="@{bean.s_InvVersion}"
 
+                    style="@style/Edittext_right"
                     />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="仓库"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:text="@{bean.s_WhCode}"
+                    style="@style/Edittext_right"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
                     android:layout_margin="@dimen/layout_margin"
                     android:text="申请数量"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:text="请选择"
-                    style="@style/Text_selector"
+                <EditText
+                    android:id="@+id/et_qty"
+                    android:inputType="number"
 
+                    style="@style/Edittext_right"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -73,14 +100,38 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
-                    android:text="项目应用"
+                    android:text="应用领域"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-                <EditText
-                    style="@style/Edittext_right"
-                    android:hint="必填"
+                <TextView
+                    android:hint="请选择"
+                    android:text="@{bean.s_ApplicationArea}"
+                    android:layout_alignParentRight="true"
+
+                    style="@style/Text_selector"
+                    android:id="@+id/tv_field"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="应用描述"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:hint="请选择"
+                    android:text="@{bean.s_ApplicationProject}"
+                    android:id="@+id/tv_description"
+                    android:layout_alignParentRight="true"
+                    style="@style/Text_selector"
+
                     />
             </RelativeLayout>
             <LinearLayout
@@ -95,6 +146,8 @@
                     android:text="客户现况："
                     />
                 <EditText
+                    android:id="@+id/et_memo1"
+                    android:text="@{bean.s_Memo1}"
                     android:hint="请输入"
                     android:padding="5dp"
                     android:gravity="start"
@@ -115,6 +168,8 @@
                     android:text="开发的项目细节："
                     />
                 <EditText
+                    android:id="@+id/et_memo2"
+                    android:text="@{bean.s_Memo2}"
                     android:hint="请输入"
                     android:padding="5dp"
                     android:gravity="start"
@@ -135,6 +190,8 @@
                     android:text="需求以及工程师人力："
                     />
                 <EditText
+                    android:id="@+id/et_memo3"
+                    android:text="@{bean.s_Memo3}"
                     android:hint="请输入"
                     android:padding="5dp"
                     android:gravity="start"
@@ -155,3 +212,4 @@
     </ScrollView>
 
 </LinearLayout>
+</layout>

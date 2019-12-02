@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data></data>
+    <data>
+        <variable
+            name="bean"
+            type="com.example.storescontrol.bean.SampleApplicationBean" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,15 +27,53 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
+                    android:text="销售人员"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:text="@{bean.s_SaleMan}"
+                    android:hint="请选择"
+                    android:id="@+id/tv_personnel"
+                    android:layout_alignParentRight="true"
+                    style="@style/Text_selector"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
+                    android:text="部门"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    style="@style/Edittext_right"
+                    android:text="@{bean.s_DepName}"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
                     android:text="客户名称"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-                <EditText
-                    style="@style/Edittext_right"
-                    android:hint="请填入"
-
+                <TextView
+                    android:id="@+id/tv_recordcompany"
+                    android:text="@{bean.r_RecordCompany}"
+                    android:hint="请选择"
+                    android:layout_alignParentRight="true"
+                    style="@style/Text_selector"
+                    android:layout_width="200dp"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -47,9 +88,10 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_s_person"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactPerson}"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -64,9 +106,11 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_s_phone"
+                    android:inputType="number"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactPhone}"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -81,16 +125,21 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_s_address"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactAddress}"
                     />
             </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
             <Button
                 android:id="@+id/b_applicationdetails"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
-                android:text="增加工程品申请明细"
+                android:text="增加明细"
                 android:textColor="@color/blue"
                 android:background="@color/zxing_transparent"
                 android:layout_width="match_parent"
@@ -106,10 +155,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-                <EditText
-                    style="@style/Edittext_right"
-                    android:hint="请填入"
-
+                <TextView
+                    android:hint="请选择"
+                    android:text="@{bean.r_MemberAgents}"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/tv_agent"
+                    style="@style/Text_selector"
+                    android:layout_width="200dp"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -124,9 +176,10 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_m_person"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactPerson_M}"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -141,9 +194,11 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_m_phone"
+                    android:inputType="number"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactPhone_M}"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -158,9 +213,10 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:id="@+id/et_m_address"
                     style="@style/Edittext_right"
                     android:hint="请填入"
-
+                    android:text="@{bean.s_ContactAddress_M}"
                     />
             </RelativeLayout>
             <LinearLayout
@@ -207,6 +263,7 @@
                     android:text="客户试用反馈意见或建议（一周内）："
                     />
                 <EditText
+                    android:id="@+id/et_feedback"
                     android:hint="发出后一周内反馈客户试用反馈意见或建议"
                     android:padding="5dp"
                     android:gravity="start"
@@ -227,6 +284,7 @@
                     android:text="备注："
                     />
                 <EditText
+                    android:id="@+id/et_memo"
                     android:hint="请输入"
                     android:padding="5dp"
                     android:gravity="start"
@@ -236,6 +294,7 @@
                     android:layout_height="100dp" />
             </LinearLayout>
             <Button
+                android:id="@+id/b_submit"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:text="提交"

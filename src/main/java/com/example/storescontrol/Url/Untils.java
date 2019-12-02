@@ -1,6 +1,8 @@
 package com.example.storescontrol.Url;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.storescontrol.R;
+import com.example.storescontrol.bean.SampleApplicationBean;
+import com.google.gson.Gson;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -94,5 +98,31 @@ public class Untils {
         Log.i("parsecode-->",stringList.toString());
         return  stringList;
 
+    }
+    public static SampleApplicationBean getSampleApplicationBean(Context context){
+        SampleApplicationBean bean=null;
+        SharedPreferences sharedPreferences=context.getSharedPreferences("sp",0);
+        String data=sharedPreferences.getString("SampleApplicationBean","");
+        if(!data.isEmpty()){
+            bean=new Gson().fromJson(data,SampleApplicationBean.class);
+        }
+        return  bean;
+    }
+    public static void  setSampleApplicationBean(Context context,SampleApplicationBean bean){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("sp",0);
+        sharedPreferences.edit().putString("SampleApplicationBean",new Gson().toJson(bean)).commit();
+    }
+    public static SampleApplicationBean.Product getProductBean(Context context){
+        SampleApplicationBean.Product bean=null;
+        SharedPreferences sharedPreferences=context.getSharedPreferences("sp",0);
+        String data=sharedPreferences.getString("ProductBean","");
+        if(!data.isEmpty()){
+            bean=new Gson().fromJson(data,SampleApplicationBean.Product.class);
+        }
+        return  bean;
+    }
+    public static void  setProductBean(Context context,SampleApplicationBean.Product bean){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("sp",0);
+        sharedPreferences.edit().putString("ProductBean",new Gson().toJson(bean)).commit();
     }
 }

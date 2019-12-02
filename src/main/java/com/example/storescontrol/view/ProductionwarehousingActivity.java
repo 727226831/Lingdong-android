@@ -381,9 +381,6 @@ public class ProductionwarehousingActivity extends BaseActivity {
             jsonObject.put("methodname","getArrivalHeadBycode");
             jsonObject.put("acccode",acccode);
             jsonObject.put("ccode",s);
-//            if(Request.URL.equals(Request.URL_AR)) {
-//                jsonObject.put("cVouchType", getIntent().getStringExtra("menuname"));
-//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
