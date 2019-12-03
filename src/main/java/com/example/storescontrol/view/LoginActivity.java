@@ -36,7 +36,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class LoginActivity extends BaseActivity {
-    TextView titleTv;
+
     ActivityLoginBinding activityLoginBinding;
 
     @Override

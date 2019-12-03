@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -40,6 +44,7 @@ public class ModelListActivity extends BaseActivity {
     FunctionAdapter functionAdapter;
     RecyclerView recyclerView;
     SampleApplicationBean.Product bean;
+    private EditText editTextSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +52,26 @@ public class ModelListActivity extends BaseActivity {
         Untils.initTitle("型号列表",this);
         recyclerView=findViewById(R.id.rv_list);
         bean=Untils.getProductBean(ModelListActivity.this);
-        getData();
+        editTextSearch=findViewById(R.id.et_search);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getData(editable.toString());
+            }
+        });
+        getData("");
     }
-    private void getData() {
+    private void getData(String keyword) {
         dialog.show();
         JSONObject jsonObject=new JSONObject();
         try {
@@ -61,7 +83,7 @@ public class ModelListActivity extends BaseActivity {
 
             jsonObject.put("type",getIntent().getStringExtra("type"));
             jsonObject.put("invdefine1",bean.getS_InvDefine1());
-            jsonObject.put("keyword","");
+            jsonObject.put("keyword",keyword);
 
 
         } catch (JSONException e) {
@@ -81,13 +103,15 @@ public class ModelListActivity extends BaseActivity {
                         modelBean =new Gson().fromJson(result, ModelBean.class);
                         if(modelBean.getResultcode().equals("200")) {
                             functionAdapter = new FunctionAdapter(modelBean.getData());
-                            recyclerView.setLayoutManager(new LinearLayoutManager(ModelListActivity.this));
-                            recyclerView.addItemDecoration(new DividerItemDecoration(ModelListActivity.this, DividerItemDecoration.VERTICAL));
-                            recyclerView.setAdapter(functionAdapter);
+
                         }else {
+                            List<ModelBean.Data> data=new ArrayList<>();
+                            functionAdapter = new FunctionAdapter(data);
                             Toast.makeText(ModelListActivity.this, modelBean.getResultMessage(), Toast.LENGTH_LONG).show();
                         }
-
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ModelListActivity.this));
+                        recyclerView.addItemDecoration(new DividerItemDecoration(ModelListActivity.this, DividerItemDecoration.VERTICAL));
+                        recyclerView.setAdapter(functionAdapter);
 
 
                     }

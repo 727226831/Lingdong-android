@@ -8,11 +8,18 @@
     <include
         android:id="@+id/l_title"
         layout="@layout/layout_title"/>
-
+    <EditText
+        android:layout_margin="10dp"
+        android:layout_below="@id/l_title"
+        android:singleLine="true"
+        android:hint="请输入搜索内容"
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
     <android.support.v7.widget.RecyclerView
         android:layout_margin="@dimen/layout_margin"
 
-        android:layout_below="@id/l_title"
+        android:layout_below="@id/et_search"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

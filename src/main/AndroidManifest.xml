@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.storescontrol">
-
+    <!-- 安卓6蓝牙权限，必须打开定位权限 -->
     <application
         android:name=".view.BaseApplication"
         android:allowBackup="true"
@@ -14,7 +14,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".view.sampleapplication.DescriptionListActivity"></activity>
+        <activity android:name=".view.sampleapplication.SampleListActivity"></activity>
+        <activity android:name=".view.sampleapplication.DescriptionListActivity" />
         <activity android:name=".view.sampleapplication.ModelListActivity" />
         <activity android:name=".view.sampleapplication.AgentListActivity" />
         <activity android:name=".view.sampleapplication.FamilyListActivity" />
@@ -22,9 +23,6 @@
         <activity android:name=".view.sampleapplication.PersonnelListActivity" />
         <activity
             android:name=".view.sampleapplication.DkDetailsActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity
-            android:name=".view.sampleapplication.ApplicationDetailsActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".view.sampleapplication.IssueApplicationActivity" />
         <activity
@@ -79,7 +77,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="hlqc.storescontrol.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -96,7 +94,7 @@
             android:exported="true"
             android:label="PushService"
             android:process=":pushservice" />
-    </application> <!-- 安卓6蓝牙权限，必须打开定位权限 -->
+    </application>
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />

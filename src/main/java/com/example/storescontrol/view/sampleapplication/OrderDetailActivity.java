@@ -27,13 +27,14 @@ public class OrderDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
         binding= DataBindingUtil.setContentView(OrderDetailActivity.this,R.layout.activity_order_detail);
-        Untils.initTitle("样品&评估板&管芯",this);
+        Untils.initTitle(getIntent().getStringExtra("menuname"),this);
         binding.tvFamily.setOnClickListener(onClickListener);
         binding.tvModel.setOnClickListener(onClickListener);
         binding.tvField.setOnClickListener(onClickListener);
         binding.tvDescription.setOnClickListener(onClickListener);
         binding.tvModelAC.setOnClickListener(onClickListener);
         binding.bSubmit.setOnClickListener(onClickListener);
+
         if(getIntent().getStringExtra("type").equals("GC")){
           binding.lInvNameAC.setVisibility(View.VISIBLE);
           binding.lInvVersionAC.setVisibility(View.VISIBLE);
@@ -41,7 +42,7 @@ public class OrderDetailActivity extends BaseActivity {
         if(getIntent().getParcelableExtra("Product")!=null){
             bean=getIntent().getParcelableExtra("Product");
         }else {
-            Log.i("is run","");
+
             bean=new SampleApplicationBean.Product();
             bean.setS_InvDefine1("");
         }
@@ -128,6 +129,7 @@ public class OrderDetailActivity extends BaseActivity {
                     }
                     intent=new Intent(OrderDetailActivity.this, ModelListActivity.class);
                     intent.putExtra("type",getIntent().getStringExtra("type"));
+                    startActivity(intent);
                     break;
                 case R.id.tv_field:
                     AlertDialog.Builder builder=new AlertDialog.Builder(OrderDetailActivity.this);
@@ -157,7 +159,7 @@ public class OrderDetailActivity extends BaseActivity {
                     SampleApplicationBean.Product product=Untils.getProductBean(OrderDetailActivity.this);
 
 
-                    sampleApplicationBean.getDetails().add(product);
+                    sampleApplicationBean.getJ_SampleDetails().add(product);
                     Log.i("submit",new Gson().toJson(sampleApplicationBean));
                     Untils.setSampleApplicationBean(OrderDetailActivity.this,sampleApplicationBean);
                     finish();

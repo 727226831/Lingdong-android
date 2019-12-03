@@ -21,6 +21,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -219,38 +220,20 @@
                     android:text="@{bean.s_ContactAddress_M}"
                     />
             </RelativeLayout>
-            <LinearLayout
 
-                android:orientation="vertical"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_listFile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="图片："
-                    style="@style/textview" />
-                <ImageButton
-                    android:layout_margin="@dimen/layout_margin"
-                    android:scaleType="fitXY"
-
-                    android:background="@mipmap/ic_upload"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/l_batch"
-                android:orientation="vertical"
+                android:layout_height="280dp"/>
+            <Button
+                android:id="@+id/b_uploadFile"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
+                android:text="上传附件"
+                android:textColor="@color/blue"
+                android:background="@color/zxing_transparent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="附件："
-                    style="@style/textview" />
-                <ImageButton
-                    android:layout_margin="@dimen/layout_margin"
-                    android:scaleType="fitXY"
-                    android:id="@+id/ib_upload"
-                    android:background="@mipmap/ic_upload"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -294,6 +277,7 @@
                     android:layout_height="100dp" />
             </LinearLayout>
             <Button
+                android:visibility="gone"
                 android:id="@+id/b_submit"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
@@ -302,6 +286,56 @@
                 android:background="@color/blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/l_approval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/b_add"
+                    android:layout_weight="4"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:text="提交"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/b_agree"
+                    android:layout_weight="4"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:text="同意"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/b_unagree"
+                    android:layout_weight="4"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:text="不同意"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/b_exit"
+                    android:layout_weight="4"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:text="撤销"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

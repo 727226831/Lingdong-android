@@ -6,10 +6,38 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SampleApplicationBean {
+public class SampleApplicationBean implements Parcelable {
     private String S_Code;//申请单号
     private String S_Maker;//申请人
 
+    public String getS_State() {
+        return S_State;
+    }
+
+    public void setS_State(String s_State) {
+        S_State = s_State;
+    }
+
+    private String S_State;
+    public String getS_Id() {
+        return S_Id;
+    }
+
+    public void setS_Id(String s_Id) {
+        S_Id = s_Id;
+    }
+
+    private String S_Id;
+
+    public String getP_Id() {
+        return P_Id;
+    }
+
+    public void setP_Id(String p_Id) {
+        P_Id = p_Id;
+    }
+
+    private String P_Id;
     public String getS_Maker_Id() {
         return S_Maker_Id;
     }
@@ -30,6 +58,52 @@ public class SampleApplicationBean {
     private String S_ContactAddress;
     private String S_AppType;//申请类型
     private String R_MemberAgents;//供应商
+    String S_Attachment01;
+
+    public String getS_Attachment01() {
+        return S_Attachment01;
+    }
+
+    public void setS_Attachment01(String s_Attachment01) {
+        S_Attachment01 = s_Attachment01;
+    }
+
+    public String getS_Attachment02() {
+        return S_Attachment02;
+    }
+
+    public void setS_Attachment02(String s_Attachment02) {
+        S_Attachment02 = s_Attachment02;
+    }
+
+    public String getS_Attachment03() {
+        return S_Attachment03;
+    }
+
+    public void setS_Attachment03(String s_Attachment03) {
+        S_Attachment03 = s_Attachment03;
+    }
+
+    public String getS_Attachment04() {
+        return S_Attachment04;
+    }
+
+    public void setS_Attachment04(String s_Attachment04) {
+        S_Attachment04 = s_Attachment04;
+    }
+
+    public String getS_Attachment05() {
+        return S_Attachment05;
+    }
+
+    public void setS_Attachment05(String s_Attachment05) {
+        S_Attachment05 = s_Attachment05;
+    }
+
+    String S_Attachment02;
+    String S_Attachment03;
+    String S_Attachment04;
+    String S_Attachment05;
 
     public String getS_Code() {
         return S_Code;
@@ -191,13 +265,7 @@ public class SampleApplicationBean {
         S_Feedback = s_Feedback;
     }
 
-    public List<Product> getDetails() {
-        return details;
-    }
 
-    public void setDetails(List<Product> details) {
-        this.details = details;
-    }
 
     private String S_ContactPerson_M;
     private String S_ContactPhone_M;
@@ -206,7 +274,16 @@ public class SampleApplicationBean {
     private String S_ExpressNumber;//快递单号
     private String S_Memo;
     private String S_Feedback;
-    private List<Product> details =new ArrayList<>();
+
+    public List<Product> getJ_SampleDetails() {
+        return J_SampleDetails;
+    }
+
+    public void setJ_SampleDetails(List<Product> j_SampleDetails) {
+        J_SampleDetails = j_SampleDetails;
+    }
+
+    private List<Product> J_SampleDetails =new ArrayList<>();
 
 
     public static class Product implements Parcelable {
@@ -321,6 +398,8 @@ public class SampleApplicationBean {
         String S_UsePrice;
         String S_Memo1;
 
+
+
         public String getS_Memo1() {
             return S_Memo1;
         }
@@ -408,4 +487,90 @@ public class SampleApplicationBean {
     }
 
 
+    public SampleApplicationBean() {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.S_Code);
+        dest.writeString(this.S_Maker);
+        dest.writeString(this.S_State);
+        dest.writeString(this.S_Id);
+        dest.writeString(this.P_Id);
+        dest.writeString(this.S_Maker_Id);
+        dest.writeString(this.S_SaleMan);
+        dest.writeString(this.S_DepName);
+        dest.writeInt(this.S_SaleMan_Id);
+        dest.writeString(this.R_RecordCompany);
+        dest.writeInt(this.R_Id);
+        dest.writeString(this.S_ContactPerson);
+        dest.writeString(this.S_ContactPhone);
+        dest.writeString(this.S_ContactMail);
+        dest.writeString(this.S_ContactAddress);
+        dest.writeString(this.S_AppType);
+        dest.writeString(this.R_MemberAgents);
+        dest.writeString(this.S_Attachment01);
+        dest.writeString(this.S_Attachment02);
+        dest.writeString(this.S_Attachment03);
+        dest.writeString(this.S_Attachment04);
+        dest.writeString(this.S_Attachment05);
+        dest.writeString(this.S_ContactPerson_M);
+        dest.writeString(this.S_ContactPhone_M);
+        dest.writeString(this.S_ContactAddress_M);
+        dest.writeString(this.S_ExpressCompany);
+        dest.writeString(this.S_ExpressNumber);
+        dest.writeString(this.S_Memo);
+        dest.writeString(this.S_Feedback);
+        dest.writeTypedList(this.J_SampleDetails);
+    }
+
+    protected SampleApplicationBean(Parcel in) {
+        this.S_Code = in.readString();
+        this.S_Maker = in.readString();
+        this.S_State = in.readString();
+        this.S_Id = in.readString();
+        this.P_Id = in.readString();
+        this.S_Maker_Id = in.readString();
+        this.S_SaleMan = in.readString();
+        this.S_DepName = in.readString();
+        this.S_SaleMan_Id = in.readInt();
+        this.R_RecordCompany = in.readString();
+        this.R_Id = in.readInt();
+        this.S_ContactPerson = in.readString();
+        this.S_ContactPhone = in.readString();
+        this.S_ContactMail = in.readString();
+        this.S_ContactAddress = in.readString();
+        this.S_AppType = in.readString();
+        this.R_MemberAgents = in.readString();
+        this.S_Attachment01 = in.readString();
+        this.S_Attachment02 = in.readString();
+        this.S_Attachment03 = in.readString();
+        this.S_Attachment04 = in.readString();
+        this.S_Attachment05 = in.readString();
+        this.S_ContactPerson_M = in.readString();
+        this.S_ContactPhone_M = in.readString();
+        this.S_ContactAddress_M = in.readString();
+        this.S_ExpressCompany = in.readString();
+        this.S_ExpressNumber = in.readString();
+        this.S_Memo = in.readString();
+        this.S_Feedback = in.readString();
+        this.J_SampleDetails = in.createTypedArrayList(Product.CREATOR);
+    }
+
+    public static final Creator<SampleApplicationBean> CREATOR = new Creator<SampleApplicationBean>() {
+        @Override
+        public SampleApplicationBean createFromParcel(Parcel source) {
+            return new SampleApplicationBean(source);
+        }
+
+        @Override
+        public SampleApplicationBean[] newArray(int size) {
+            return new SampleApplicationBean[size];
+        }
+    };
 }

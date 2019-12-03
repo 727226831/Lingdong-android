@@ -61,6 +61,22 @@
                 />
         </LinearLayout>
         <View style="@style/line"/>
+        <LinearLayout
+            android:id="@+id/l_four"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:drawableRight="@mipmap/ic_choose"
+                android:layout_margin="@dimen/layout_margin"
+                android:text="样品申请审批"
+                style="@style/item_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <View style="@style/line"/>
 
 
 

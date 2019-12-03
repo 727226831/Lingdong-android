@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
@@ -23,6 +27,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -35,6 +40,7 @@ public class DescriptionListActivity extends BaseActivity {
     FunctionAdapter functionAdapter;
     RecyclerView recyclerView;
     SampleApplicationBean.Product bean;
+    private EditText editTextSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,16 +48,33 @@ public class DescriptionListActivity extends BaseActivity {
         Untils.initTitle("应用描述列表",this);
         recyclerView=findViewById(R.id.rv_list);
        bean=Untils.getProductBean(DescriptionListActivity.this);
-        getData();
+        editTextSearch=findViewById(R.id.et_search);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getData(editable.toString());
+            }
+        });
+        getData("");
     }
-    private void getData() {
+    private void getData(String keyword) {
         dialog.show();
         JSONObject jsonObject=new JSONObject();
         try {
 
             jsonObject.put("methodname","Define30");
             jsonObject.put("applicationarea",bean.getS_ApplicationArea());
-            jsonObject.put("keyword","");
+            jsonObject.put("keyword",keyword);
 
 
         } catch (JSONException e) {
@@ -69,7 +92,14 @@ public class DescriptionListActivity extends BaseActivity {
                     if(response.code()==200) {
                         String result=response.body().string();
                         agmentBean =new Gson().fromJson(result, AgmentBean.class);
-                        functionAdapter=new FunctionAdapter(agmentBean.getData());
+                        if(agmentBean.getResultcode().equals("200")){
+                            functionAdapter=new FunctionAdapter(agmentBean.getData());
+                        }else {
+                            List<AgmentBean.Data> data=new ArrayList<>();
+                            functionAdapter=new FunctionAdapter(data);
+                            Toast.makeText(DescriptionListActivity.this, agmentBean.getResultMessage(), Toast.LENGTH_LONG).show();
+                        }
+
                         recyclerView.setLayoutManager(new LinearLayoutManager(DescriptionListActivity.this));
                         recyclerView.addItemDecoration(new DividerItemDecoration(DescriptionListActivity.this,DividerItemDecoration.VERTICAL));
                         recyclerView.setAdapter(functionAdapter);

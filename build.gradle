@@ -15,16 +15,16 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86_64', "x86"
         }
 
-        applicationId "com.example.storescontrol.hlqc"
+        applicationId "com.example.storescontrol.lingdong"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                GETUI_APP_ID : "WYqzd2Vb08AMUt06Ah7aY3",
-                GETUI_APP_KEY : "fmnJ4TcZw69ZQVTaELdcH7",
-                GETUI_APP_SECRET : "CBsUpwsGnA86jJ2gCYDVe6"
+                GETUI_APP_ID    : "WYqzd2Vb08AMUt06Ah7aY3",
+                GETUI_APP_KEY   : "fmnJ4TcZw69ZQVTaELdcH7",
+                GETUI_APP_SECRET: "CBsUpwsGnA86jJ2gCYDVe6"
         ]
 
     }

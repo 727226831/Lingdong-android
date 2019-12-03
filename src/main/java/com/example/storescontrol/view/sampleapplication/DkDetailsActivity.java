@@ -158,7 +158,7 @@ public class DkDetailsActivity extends BaseActivity {
                 case R.id.b_submit:
                     SampleApplicationBean sampleApplicationBean=Untils.getSampleApplicationBean(DkDetailsActivity.this);
                     SampleApplicationBean.Product product=Untils.getProductBean(DkDetailsActivity.this);
-                    sampleApplicationBean.getDetails().add(product);
+                    sampleApplicationBean.getJ_SampleDetails().add(product);
                     Log.i("submit",new Gson().toJson(sampleApplicationBean));
                     Untils.setSampleApplicationBean(DkDetailsActivity.this,sampleApplicationBean);
                     finish();

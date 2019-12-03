@@ -21,6 +21,7 @@ public class SampleTypeActivity extends BaseActivity {
         binding.lOne.setOnClickListener(onClickListenern);
         binding.lTwo.setOnClickListener(onClickListenern);
         binding.lThree.setOnClickListener(onClickListenern);
+        binding.lFour.setOnClickListener(onClickListenern);
 
 
 
@@ -29,18 +30,26 @@ public class SampleTypeActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             Intent intent=null;
-            intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
+
             switch (v.getId()){
                 case R.id.l_one:
+                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                     intent.putExtra("menuname","MCU销售订单申请");
                     intent.putExtra("type","YP");
                     break;
                 case R.id.l_two:
+                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                     intent.putExtra("menuname","MCU工程品发放申请");
                     intent.putExtra("type","GC");
                     break;
                 case R.id.l_three:
+                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                     intent.putExtra("menuname","MM32-Motor-DK申请");
+                    intent.putExtra("type","");
+                    break;
+                case R.id.l_four:
+                    intent=new Intent(SampleTypeActivity.this,SampleListActivity.class);
+                    intent.putExtra("menuname","样品申请审批");
                     intent.putExtra("type","");
                     break;
 

@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
@@ -27,6 +31,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -38,22 +43,40 @@ public class PersonnelListActivity extends BaseActivity {
     PersonnelBean personnelBean;
     FunctionAdapter functionAdapter;
     RecyclerView recyclerView;
-    private int type=-1; //0销售人员1客户
+
+    private EditText editTextSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personnel_list);
         Untils.initTitle("销售人员",this);
         recyclerView=findViewById(R.id.rv_list);
-        getData();
+        editTextSearch=findViewById(R.id.et_search);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getData(editable.toString());
+            }
+        });
+        getData("");
     }
-    private void getData() {
+    private void getData(String keyword ) {
 
         JSONObject jsonObject=new JSONObject();
         try {
 
             jsonObject.put("methodname","SaleMan");
-            jsonObject.put("keyword","");
+            jsonObject.put("keyword",keyword);
 
 
         } catch (JSONException e) {
@@ -72,7 +95,14 @@ public class PersonnelListActivity extends BaseActivity {
                         String result=response.body().string();
 
                         personnelBean=new Gson().fromJson(result, PersonnelBean.class);
-                        functionAdapter=new FunctionAdapter(personnelBean.getData());
+                        if(personnelBean.getResultcode().equals("200")){
+                            functionAdapter=new FunctionAdapter(personnelBean.getData());
+                        }else {
+                            List<PersonnelBean.Data> data=new ArrayList<>();
+                            functionAdapter=new FunctionAdapter(data);
+                            Toast.makeText(PersonnelListActivity.this, personnelBean.getResultMessage(), Toast.LENGTH_LONG).show();
+                        }
+
                         recyclerView.setLayoutManager(new LinearLayoutManager(PersonnelListActivity.this));
                         recyclerView.addItemDecoration(new DividerItemDecoration(PersonnelListActivity.this,DividerItemDecoration.VERTICAL));
                         recyclerView.setAdapter(functionAdapter);

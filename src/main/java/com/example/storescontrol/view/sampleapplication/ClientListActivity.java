@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
@@ -24,6 +28,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -35,22 +40,39 @@ public class ClientListActivity extends BaseActivity {
     ClientBean personnelBean;
     FunctionAdapter functionAdapter;
     RecyclerView recyclerView;
-
+    private EditText editTextSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_list);
         Untils.initTitle("客户信息列表",this);
         recyclerView=findViewById(R.id.rv_list);
-        getData();
+        editTextSearch=findViewById(R.id.et_search);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getData(editable.toString());
+            }
+        });
+        getData("");
     }
-    private void getData() {
+    private void getData(String keyword) {
         dialog.show();
         JSONObject jsonObject=new JSONObject();
         try {
 
             jsonObject.put("methodname","RecordCompany");
-            jsonObject.put("keyword","");
+            jsonObject.put("keyword",keyword);
 
 
         } catch (JSONException e) {
@@ -68,7 +90,14 @@ public class ClientListActivity extends BaseActivity {
                     if(response.code()==200) {
                         String result=response.body().string();
                         personnelBean=new Gson().fromJson(result, ClientBean.class);
-                        functionAdapter=new FunctionAdapter(personnelBean.getData());
+                        if(personnelBean.getResultcode().equals("200")){
+                            functionAdapter=new FunctionAdapter(personnelBean.getData());
+                        }else {
+                          List<ClientBean.Data> data=new LinkedList<>();
+                            functionAdapter=new FunctionAdapter(data);
+                            Toast.makeText(ClientListActivity.this, personnelBean.getResultMessage(), Toast.LENGTH_LONG).show();
+                        }
+
                         recyclerView.setLayoutManager(new LinearLayoutManager(ClientListActivity.this));
                         recyclerView.addItemDecoration(new DividerItemDecoration(ClientListActivity.this,DividerItemDecoration.VERTICAL));
                         recyclerView.setAdapter(functionAdapter);
