@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.storescontrol.BuildConfig;
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
+import com.example.storescontrol.Url.Untils;
 import com.example.storescontrol.bean.LoginBean;
 import com.example.storescontrol.Url.iUrl;
 import com.example.storescontrol.databinding.ActivityLoginBinding;
@@ -26,9 +27,6 @@ import com.igexin.sdk.PushManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
-import java.util.Random;
-
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Callback;
@@ -38,7 +36,7 @@ import retrofit2.Retrofit;
 public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding activityLoginBinding;
-
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +45,8 @@ public class LoginActivity extends BaseActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
 
-        activityLoginBinding.cbRemember.setChecked(sharedPreferences.getBoolean("isChecked",true));
+        activityLoginBinding.cbRemember.setChecked(sharedPreferences.getBoolean("isRemember",true));
+        activityLoginBinding.cbType.setChecked(sharedPreferences.getBoolean("isAgent",false));
         activityLoginBinding.etUsername.setText(sharedPreferences.getString("user",""));
 
         activityLoginBinding.tvVersion.setText("版本号"+BuildConfig.VERSION_NAME);
@@ -55,12 +54,13 @@ public class LoginActivity extends BaseActivity {
         if(activityLoginBinding.cbRemember.isChecked()){
             activityLoginBinding.etPassword.setText(sharedPreferences.getString("password",""));
         }
+
+         editor= sharedPreferences.edit();//获取编辑器
           activityLoginBinding.cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
               @Override
               public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                  SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
-                  SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
-                  editor.putBoolean("isChecked",activityLoginBinding.cbRemember.isChecked());
+
+                  editor.putBoolean("isRemember",activityLoginBinding.cbRemember.isChecked());
                   if (isChecked==false){
                       editor.putString("password", "");
                   }
@@ -74,7 +74,11 @@ public class LoginActivity extends BaseActivity {
              public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                  if(b){
                      type=2;
+                 }else {
+                     type=1;
                  }
+                 editor.putBoolean("isAgent",b).commit();
+
              }
          });
 
@@ -89,6 +93,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dialog.show();
+                Untils.setBadgeNumber(LoginActivity.this,3);
                     login();
 
 
@@ -106,6 +111,7 @@ public class LoginActivity extends BaseActivity {
         if(Request.URL.equals(Request.URL_LD)){
             activityLoginBinding.cbType.setVisibility(View.VISIBLE);
         }
+
 
 
     }

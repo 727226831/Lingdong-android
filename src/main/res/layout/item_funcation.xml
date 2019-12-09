@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:layout_margin="10dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 <Button
     android:id="@+id/b_funcation"
     android:background="@android:color/transparent"
-    android:drawableTop="@mipmap/ic_cgrk"
+    android:drawableTop="@mipmap/apprival"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="采购入库"/>
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:textSize="10sp"
+        android:text="99+"
+        android:id="@+id/tv_tag"
+        android:background="@mipmap/round"
+        android:layout_width="15dp"
+        android:layout_height="15dp"/>
+
+
+
+
+
+</RelativeLayout>

@@ -13,70 +13,10 @@
         <include
             android:id="@+id/l_title"
             layout="@layout/layout_title"/>
-        <LinearLayout
-            android:id="@+id/l_one"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-
-                android:drawableRight="@mipmap/ic_choose"
-                android:layout_margin="@dimen/layout_margin"
-                android:text="MCU销售订单申请"
-                style="@style/item_normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-        <View style="@style/line"/>
-        <LinearLayout
-            android:id="@+id/l_two"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-
-                android:drawableRight="@mipmap/ic_choose"
-                android:layout_margin="@dimen/layout_margin"
-                android:text="MCU工程品发放申请"
-                style="@style/item_normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-        <View style="@style/line"/>
-        <LinearLayout
-            android:id="@+id/l_three"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-
-                android:drawableRight="@mipmap/ic_choose"
-                android:layout_margin="@dimen/layout_margin"
-                android:text="MM32-Motor-DK申请"
-                style="@style/item_normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-        <View style="@style/line"/>
-        <LinearLayout
-            android:id="@+id/l_four"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-
-                android:drawableRight="@mipmap/ic_choose"
-                android:layout_margin="@dimen/layout_margin"
-                android:text="样品申请审批"
-                style="@style/item_normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-        <View style="@style/line"/>
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/rv_list"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"/>
 
 
 

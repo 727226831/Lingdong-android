@@ -63,7 +63,7 @@
         android:button="@drawable/selector_rember"
         android:id="@+id/cb_type"
         android:layout_below="@id/b_login"
-        android:text="供应商"
+        android:text="代理商"
         android:layout_width="wrap_content"
         android:layout_height="40dp" />
     <Button

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,7 +28,6 @@ import com.example.storescontrol.bean.SampleListBean;
 import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
 import com.example.storescontrol.view.task.TaskActivity;
-import com.example.storescontrol.view.task.TaskListActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -48,7 +46,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SampleListActivity extends BaseActivity {
+public class MySampleActivity extends BaseActivity {
     RecyclerView recyclerView;
     private FunctionAdapter functionAdapter;
     private EditText editTextSearch;
@@ -56,12 +54,12 @@ public class SampleListActivity extends BaseActivity {
     SharedPreferences sharedPreferences;
     TabLayout tabLayout;
     int listType=0;
-   SampleListBean taskBean= null;
+    SampleListBean taskBean= null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View v=getLayoutInflater().inflate(R.layout.activity_sample_list,null,false);
+        View v=getLayoutInflater().inflate(R.layout.activity_mytask,null,false);
         setContentView(v);
 
         tabLayout=findViewById(R.id.tl_title);
@@ -133,20 +131,26 @@ public class SampleListActivity extends BaseActivity {
         super.onResume();
     }
 
-    private void getData(final int type) {
-        listType=type;
+    private void getData(final int statusType) {
+        listType=statusType;
 
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("usercode",acccode);
-            jsonObject.put("methodname","SampleAuditList");
+            jsonObject.put("methodname","SampleList");
             jsonObject.put("keyword","");
-            if (type==0){
-                jsonObject.put("auditstatus","待审核");
-            }else {
-                jsonObject.put("auditstatus","已审核");
-
+            switch (statusType){
+                case 0:
+                    jsonObject.put("status","未提交");
+                    break;
+                case 1:
+                    jsonObject.put("status","审批中");
+                    break;
+                case 2:
+                    jsonObject.put("status","已审核");
+                    break;
             }
+
 
 
         } catch (JSONException e) {
@@ -166,22 +170,37 @@ public class SampleListActivity extends BaseActivity {
                     try {
                         taskBean = new Gson().fromJson(response.body().string(), SampleListBean.class);
                         if(taskBean.getResultcode().equals("200")){
-                            if(type==0){
-                                tabLayout.getTabAt(0).setText("待审批("+taskBean.getData().size()+")");
-                            }else if(type==1) {
-                                tabLayout.getTabAt(1).setText("已审批("+taskBean.getData().size()+")");
+
+                            switch (statusType){
+                                case 0:
+                                    tabLayout.getTabAt(0).setText("未提交("+taskBean.getData().size()+")");
+                                    break;
+                                case 1:
+                                    tabLayout.getTabAt(1).setText("审批中("+taskBean.getData().size()+")");
+                                    break;
+                                case 2:
+                                    tabLayout.getTabAt(2).setText("已审核("+taskBean.getData().size()+")");
+                                    break;
                             }
                             initAdapter(taskBean.getData());
 
                         }else {
-                           List<SampleApplicationBean> data=new ArrayList<>();
+                            List<SampleApplicationBean> data=new ArrayList<>();
                             initAdapter(data);
-                            if(type==0){
-                                tabLayout.getTabAt(0).setText("待审批");
-                            }else if(type==1) {
-                                tabLayout.getTabAt(1).setText("已审批");
+
+                            switch (statusType){
+                                case 0:
+                                    tabLayout.getTabAt(0).setText("未提交");
+
+                                    break;
+                                case 1:
+                                    tabLayout.getTabAt(1).setText("审批中");
+                                    break;
+                                case 2:
+                                    tabLayout.getTabAt(2).setText("已审核");
+                                    break;
                             }
-                            Toast.makeText(SampleListActivity.this, taskBean.getResultMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MySampleActivity.this, taskBean.getResultMessage(), Toast.LENGTH_LONG).show();
                         }
 
                     } catch (IOException e) {
@@ -196,15 +215,15 @@ public class SampleListActivity extends BaseActivity {
             }
             @Override
             public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
-               Log.i("onFailure",t.toString());
+                Log.i("onFailure",t.toString());
             } });
     }
 
     private void initAdapter(List<SampleApplicationBean> data) {
 
         functionAdapter = new FunctionAdapter(data);
-        recyclerView.setLayoutManager(new LinearLayoutManager(SampleListActivity.this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(SampleListActivity.this, DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MySampleActivity.this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(MySampleActivity.this, DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(functionAdapter);
         functionAdapter.notifyDataSetChanged();
     }
@@ -231,10 +250,10 @@ public class SampleListActivity extends BaseActivity {
 
 
             vh.textViewS_QuotationID.setText(mDatas.get(i).getS_Code());
-          //  vh.textViewS_RegisterDate.setText("时间："+mDatas.get(i).getd);
+            //  vh.textViewS_RegisterDate.setText("时间："+mDatas.get(i).getd);
 
-           //  vh.textViewS_InvVersion.setText("版本："+mDatas.get(i).getS_InvVersion());
-           // vh.textViewS_InvName.setText("型号："+mDatas.get(i).getS_InvName());
+            //  vh.textViewS_InvVersion.setText("版本："+mDatas.get(i).getS_InvVersion());
+            // vh.textViewS_InvName.setText("型号："+mDatas.get(i).getS_InvName());
             vh.textViewR_RecordCompany.setText("客户："+mDatas.get(i).getR_RecordCompany());
             vh.textViewS_Verifyer.setText("销售："+mDatas.get(i).getS_SaleMan());
             vh.textViewM_MSN.setText("供应商："+mDatas.get(i).getR_MemberAgents());
@@ -258,12 +277,22 @@ public class SampleListActivity extends BaseActivity {
                     vh.imageViewTag.setVisibility(View.GONE);
 
                     if(type==1) {
-                        Intent intent = new Intent(SampleListActivity.this, IssueApplicationActivity.class);
-                        if(listType==0){
-                            intent.putExtra("isApproved",false);
-                        }else {
-                            intent.putExtra("isApproved",true);
-                        }
+                        Intent intent = new Intent(MySampleActivity.this, IssueApplicationActivity.class);
+
+                         switch (listType){
+                             case 0:
+                                 mDatas.get(i).setS_State("未提交");
+                                 intent.putExtra("isApproved",false);
+                                 break;
+                             case 1:
+                                 mDatas.get(i).setS_State("审核中");
+                                 intent.putExtra("isApproved",true);
+                                 break;
+                             case 2:
+                                 mDatas.get(i).setS_State("已审核");
+                                 intent.putExtra("isApproved",false);
+                                 break;
+                         }
                         intent.putExtra("SampleApplicationBean", mDatas.get(i));
 
                         if(mDatas.get(i).getS_AppType().equals("样片&评估板")){

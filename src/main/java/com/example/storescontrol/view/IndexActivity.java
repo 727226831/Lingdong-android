@@ -25,6 +25,8 @@ import com.example.storescontrol.view.sampleapplication.SampleTypeActivity;
 import com.example.storescontrol.view.task.TaskListActivity;
 import com.google.gson.Gson;
 
+
+
 public class IndexActivity extends BaseActivity {
 
     RecyclerView recyclerView;
@@ -58,7 +60,7 @@ public class IndexActivity extends BaseActivity {
 
         functionAdapter=new FunctionAdapter();
         recyclerView=findViewById(R.id.rv_function);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,4));
         recyclerView.setAdapter(functionAdapter);
         textViewExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,8 @@ public class IndexActivity extends BaseActivity {
                 IndexActivity.this.finish();
             }
         });
+
+
 
     }
 
@@ -87,34 +91,8 @@ public class IndexActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent();
-                    Log.i("select-->",userinfoBean.getData().get(i).getMenuname());
-                    if(userinfoBean.getData().get(i).getMenuname().equals("采购入库")){
-                        intent  =new Intent(IndexActivity.this,ProductionwarehousingActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("生产入库")){
-                        if(Request.URL.equals(Request.URL_AR)){
-                            intent  =new Intent(IndexActivity.this,ProductionwarehousingActivity.class);
-                        }else {
-                            intent = new Intent(IndexActivity.this, ProductionListActivity.class);
-                        }
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("调拨入库")){
-                        intent  =new Intent(IndexActivity.this,ProductionListActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("材料出库")){
-                        intent  =new Intent(IndexActivity.this,ProductionListActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("销售出库")){
-                        intent  =new Intent(IndexActivity.this,DispatchActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("调拨出库")){
-                        intent  =new Intent(IndexActivity.this,ProductionListActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("货位调整")){
-                        intent  =new Intent(IndexActivity.this,ProductionwarehousingActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("库存盘点")){
-                        intent  =new Intent(IndexActivity.this,ProductionwarehousingActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("库存查询")){
-                        intent  =new Intent(IndexActivity.this,StockcheckActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("采购到货")){
-                        intent  =new Intent(IndexActivity.this,ProductionwarehousingActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("完工填报")){
-                        intent  =new Intent(IndexActivity.this,ReportActivity.class);
-                    }else if(userinfoBean.getData().get(i).getMenuname().equals("待审批任务")){
+
+                if(userinfoBean.getData().get(i).getMenuname().equals("报价审批")){
                         intent  =new Intent(IndexActivity.this, TaskListActivity.class);
                     }else if(userinfoBean.getData().get(i).getMenuname().equals("样品申请")){
                         intent  =new Intent(IndexActivity.this, SampleTypeActivity.class);
@@ -136,10 +114,10 @@ public class IndexActivity extends BaseActivity {
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_search);
             }else if(userinfoBean.getData().get(i).getMenuname().contains("调整")){
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_dbrk);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("待审批")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_inventory);
+            }else if(userinfoBean.getData().get(i).getMenuname().contains("报价审批")){
+                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.apprival);
             }else if(userinfoBean.getData().get(i).getMenuname().contains("样品申请")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_inventory);
+                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.apprival);
             }
             vh.funcationButton.setCompoundDrawablesWithIntrinsicBounds(null,
                     drawableLeft, null, null);

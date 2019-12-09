@@ -151,11 +151,11 @@ public class ModelListActivity extends BaseActivity {
                 public void onClick(View view) {
                     if(getIntent().getStringExtra("type").equals("GC")){
                         bean.setS_InvName_AC(mDatas.get(i).getCInvName());
-                        bean.setS_InvVersion_AC(mDatas.get(i).getCInvCode());
+                        bean.setS_InvVersion_AC(mDatas.get(i).getCInvAddCode());
 
                     }else {
                         bean.setS_InvName(mDatas.get(i).getCInvName());
-                        bean.setS_InvVersion(mDatas.get(i).getCInvCode());
+                        bean.setS_InvVersion(mDatas.get(i).getCInvAddCode());
                         bean.setS_Batch(mDatas.get(i).getCBatch());
                         bean.setS_WhCode(mDatas.get(i).getCWhCode());
                     }

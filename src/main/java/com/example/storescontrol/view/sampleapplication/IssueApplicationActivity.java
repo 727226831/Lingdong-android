@@ -80,8 +80,14 @@ public class IssueApplicationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        binding= DataBindingUtil.setContentView(IssueApplicationActivity.this,R.layout.activity_issue_application);
-        Untils.initTitle(getIntent().getStringExtra("menuname"),this);
 
+        if(getIntent().getStringExtra("type").equals("YP")){
+            Untils.initTitle("样片&评估板&管芯",this);
+        }else   if(getIntent().getStringExtra("type").equals("GC")){
+            Untils.initTitle("MCU工程品发放申请",this);
+        }else {
+            Untils.initTitle("MM32-Motor-DK申请",this);
+        }
         binding.bApplicationdetails.setOnClickListener(onClickListener);
         binding.tvPersonnel.setOnClickListener(onClickListener);
         binding.tvRecordcompany.setOnClickListener(onClickListener);
@@ -108,14 +114,18 @@ public class IssueApplicationActivity extends BaseActivity {
         }else {
             bean=getIntent().getParcelableExtra("SampleApplicationBean");
             binding.lApproval.setVisibility(View.VISIBLE);
-            if(bean.getS_State().equals("")||bean.getS_State().equals("未提交")){
-                binding.bAdd.setVisibility(View.VISIBLE);
-            }else  if(bean.getS_State().equals("撤销")){
-                binding.bAgree.setVisibility(View.VISIBLE);
-                binding.bUnagree.setVisibility(View.VISIBLE);
-            }else {
+            Log.i("bean-->",new Gson().toJson(bean));
+            if(getIntent().getBooleanExtra("isApproved",false)){
                 binding.bExit.setVisibility(View.VISIBLE);
+            }else {
+                if(bean.getS_State().equals("")||bean.getS_State().equals("未提交")){
+                    binding.bAdd.setVisibility(View.VISIBLE);
+                }else  if(bean.getS_State().equals("已提交")||bean.getS_State().equals("审核中")){
+                    binding.bAgree.setVisibility(View.VISIBLE);
+                    binding.bUnagree.setVisibility(View.VISIBLE);
+                }
             }
+
         }
 
 
