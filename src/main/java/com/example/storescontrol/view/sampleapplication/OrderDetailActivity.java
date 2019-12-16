@@ -22,6 +22,7 @@ public class OrderDetailActivity extends BaseActivity {
       ActivityOrderDetailBinding binding;
       SampleApplicationBean.Product bean;
       String[] stringsField=new String[]{"车用电子","工业及电机","家电及医疗","消费及玩具","手机周边","显示及人机界面","其他"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +40,22 @@ public class OrderDetailActivity extends BaseActivity {
           binding.lInvNameAC.setVisibility(View.VISIBLE);
           binding.lInvVersionAC.setVisibility(View.VISIBLE);
         }
-        if(getIntent().getParcelableExtra("Product")!=null){
-            bean=getIntent().getParcelableExtra("Product");
-        }else {
+        Log.i("form-->",getIntent().getIntExtra("form",-1)+"");
+          switch (getIntent().getIntExtra("form",-1)){
+                  //1新建2编辑3只读
+              case 1:
+                  bean=new SampleApplicationBean.Product();
+                  bean.setS_InvDefine1("");
+                  break;
+              case 2:
+                  bean=getIntent().getParcelableExtra("Product");
+                  break;
+              case 3:
+                  bean=getIntent().getParcelableExtra("Product");
+                  binding.bSubmit.setVisibility(View.GONE);
+                  break;
+          }
 
-            bean=new SampleApplicationBean.Product();
-            bean.setS_InvDefine1("");
-        }
         Untils.setProductBean(OrderDetailActivity.this,bean);
         binding.etQty.addTextChangedListener(new TextWatcher() {
             @Override
@@ -155,12 +165,34 @@ public class OrderDetailActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.b_submit:
+                    if(binding.tvModel.getText().toString().isEmpty()){
+                        Toast.makeText(OrderDetailActivity.this, "请选择产品型号", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.etQty.getText().toString().isEmpty()){
+                        Toast.makeText(OrderDetailActivity.this, "请填写申请数量", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.etQty.getText().toString().isEmpty()){
+                        Toast.makeText(OrderDetailActivity.this, "请填写申请数量", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.tvField.getText().toString().isEmpty()){
+                        Toast.makeText(OrderDetailActivity.this, "应用领域不能为空", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.tvDescription.getText().toString().isEmpty()){
+                        Toast.makeText(OrderDetailActivity.this, "应用描述不能为空", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     SampleApplicationBean sampleApplicationBean=Untils.getSampleApplicationBean(OrderDetailActivity.this);
                     SampleApplicationBean.Product product=Untils.getProductBean(OrderDetailActivity.this);
+                    if(getIntent().getIntExtra("form",-1)==2){
+                        sampleApplicationBean.getJ_SampleDetails().set(getIntent().getIntExtra("position",-1),product);
+                    }else {
+                        sampleApplicationBean.getJ_SampleDetails().add(product);
+                    }
 
-
-                    sampleApplicationBean.getJ_SampleDetails().add(product);
-                    Log.i("submit",new Gson().toJson(sampleApplicationBean));
                     Untils.setSampleApplicationBean(OrderDetailActivity.this,sampleApplicationBean);
                     finish();
                     break;

@@ -10,6 +10,15 @@ public class SampleApplicationBean implements Parcelable {
     private String S_Code;//申请单号
     private String S_Maker;//申请人
 
+    public String getS_RegisterDate() {
+        return S_RegisterDate;
+    }
+
+    public void setS_RegisterDate(String s_RegisterDate) {
+        S_RegisterDate = s_RegisterDate;
+    }
+
+    private String S_RegisterDate;
     public String getS_State() {
         return S_State;
     }
@@ -275,6 +284,7 @@ public class SampleApplicationBean implements Parcelable {
     private String S_Memo;
     private String S_Feedback;
 
+
     public List<Product> getJ_SampleDetails() {
         return J_SampleDetails;
     }
@@ -499,6 +509,7 @@ public class SampleApplicationBean implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.S_Code);
         dest.writeString(this.S_Maker);
+        dest.writeString(this.S_RegisterDate);
         dest.writeString(this.S_State);
         dest.writeString(this.S_Id);
         dest.writeString(this.P_Id);
@@ -532,6 +543,7 @@ public class SampleApplicationBean implements Parcelable {
     protected SampleApplicationBean(Parcel in) {
         this.S_Code = in.readString();
         this.S_Maker = in.readString();
+        this.S_RegisterDate = in.readString();
         this.S_State = in.readString();
         this.S_Id = in.readString();
         this.P_Id = in.readString();

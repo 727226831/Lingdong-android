@@ -126,6 +126,7 @@
             android:layout_height="wrap_content"
             />
         <EditText
+            android:text="@{bean.s_Qty}"
             android:id="@+id/et_qty"
             android:inputType="number"
             android:hint="建议不超过10"
@@ -225,6 +226,7 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
+                    android:text="@{bean.s_UseQty}"
                     android:id="@+id/et_useqty"
                     android:hint="颗/月"
                     style="@style/Edittext_right"
@@ -242,7 +244,7 @@
                     android:layout_height="wrap_content"
                     />
                 <EditText
-
+                    android:text="@{bean.s_UsePrice}"
                     android:hint="美元"
                     style="@style/Edittext_right"
                     android:id="@+id/et_useprice"

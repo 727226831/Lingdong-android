@@ -201,6 +201,7 @@
                     android:layout_height="100dp" />
             </LinearLayout>
             <Button
+                android:id="@+id/b_submit"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:text="确定"

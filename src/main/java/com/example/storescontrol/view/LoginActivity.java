@@ -37,13 +37,14 @@ public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding activityLoginBinding;
     SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        activityLoginBinding=DataBindingUtil.setContentView(this,R.layout.activity_login);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
+       sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
 
         activityLoginBinding.cbRemember.setChecked(sharedPreferences.getBoolean("isRemember",true));
         activityLoginBinding.cbType.setChecked(sharedPreferences.getBoolean("isAgent",false));
@@ -93,7 +94,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dialog.show();
-                Untils.setBadgeNumber(LoginActivity.this,3);
+
                     login();
 
 
@@ -127,6 +128,11 @@ public class LoginActivity extends BaseActivity {
             jsonObject.put("methodname","UserLogin");
             jsonObject.put("usercode",activityLoginBinding.etUsername.getText().toString());
             jsonObject.put("userpassword",activityLoginBinding.etPassword.getText().toString());
+            if(sharedPreferences.getBoolean("isAgent",false)){
+                jsonObject.put("type","agent");
+            }else {
+                jsonObject.put("type","user");
+            }
 
 
         } catch (JSONException e) {
@@ -135,15 +141,13 @@ public class LoginActivity extends BaseActivity {
         String obj=jsonObject.toString();
         Log.i("json object",obj);
 
-        Retrofit retrofit=new Retrofit.Builder().baseUrl(Request.URL).build();
+        Retrofit retrofit=new Retrofit.Builder().baseUrl(Request.URL_LD8090).build();
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
         iUrl login = retrofit.create(iUrl.class);
         retrofit2.Call<ResponseBody> data;
-        if(Request.URL.equals(Request.URL_LD)) {
-           data= login.login(body);
-        }else {
+
             data= login.getMessage(body);
-        }
+
         Log.i("url--->", data.request().url().toString());
 
         data.enqueue(new Callback<ResponseBody>() {
@@ -170,13 +174,15 @@ public class LoginActivity extends BaseActivity {
 
                                 PushManager.getInstance().bindAlias(LoginActivity.this,resultBean.getAcccode(),"alias");
                                 if(!resultBean.getVersionNumber().equals(BuildConfig.VERSION_NAME)){
-                                    downloadByWeb(LoginActivity.this,Request.URL+"/upgrade/MMS_"+resultBean.getVersionNumber()+".apk");
+                                    downloadByWeb(LoginActivity.this,Request.URL+"/AppUpgrade/MMS_"+resultBean.getVersionNumber()+".apk");
                                 }else {
                                     acccode=resultBean.getAcccode();
                                     usercode=resultBean.getUsercode();
 
-
-                                    startActivity(new Intent(LoginActivity.this,IndexActivity.class));
+                                    Untils.setBadgeNumber(LoginActivity.this,Integer.parseInt(resultBean.getTotalCount()));
+                                    Intent intent=new Intent(LoginActivity.this,IndexActivity.class);
+                                    intent.putExtra("LoginBean",resultBean);
+                                    startActivity(intent);
                                     LoginActivity.this.finish();
                                 }
 

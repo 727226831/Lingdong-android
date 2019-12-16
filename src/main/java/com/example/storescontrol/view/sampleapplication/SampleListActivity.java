@@ -142,9 +142,9 @@ public class SampleListActivity extends BaseActivity {
             jsonObject.put("methodname","SampleAuditList");
             jsonObject.put("keyword","");
             if (type==0){
-                jsonObject.put("auditstatus","待审核");
+                jsonObject.put("auditstatus","待审批");
             }else {
-                jsonObject.put("auditstatus","已审核");
+                jsonObject.put("auditstatus","已审批");
 
             }
 
@@ -214,7 +214,7 @@ public class SampleListActivity extends BaseActivity {
         @NonNull
         @Override
         public FunctionAdapter.VH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            View v=getLayoutInflater().inflate(R.layout.item_task,viewGroup,false);
+            View v=getLayoutInflater().inflate(R.layout.item_sample,viewGroup,false);
             return new FunctionAdapter.VH(v);
 
 
@@ -231,13 +231,12 @@ public class SampleListActivity extends BaseActivity {
 
 
             vh.textViewS_QuotationID.setText(mDatas.get(i).getS_Code());
-          //  vh.textViewS_RegisterDate.setText("时间："+mDatas.get(i).getd);
+            vh.textViewS_RegisterDate.setText("时间："+mDatas.get(i).getS_RegisterDate());
 
-           //  vh.textViewS_InvVersion.setText("版本："+mDatas.get(i).getS_InvVersion());
-           // vh.textViewS_InvName.setText("型号："+mDatas.get(i).getS_InvName());
+
             vh.textViewR_RecordCompany.setText("客户："+mDatas.get(i).getR_RecordCompany());
             vh.textViewS_Verifyer.setText("销售："+mDatas.get(i).getS_SaleMan());
-            vh.textViewM_MSN.setText("供应商："+mDatas.get(i).getR_MemberAgents());
+            vh.textViewM_MSN.setText("代理商："+mDatas.get(i).getR_MemberAgents());
 
 
             if(sharedPreferences.getBoolean(mDatas.get(i).getS_Code(),false)){
@@ -273,6 +272,7 @@ public class SampleListActivity extends BaseActivity {
                         }else {
                             intent.putExtra("type","");
                         }
+                        intent.putExtra("form",3);
 
                         startActivity(intent);
                     }
@@ -290,8 +290,7 @@ public class SampleListActivity extends BaseActivity {
             return mDatas.size();
         }
         class  VH extends RecyclerView.ViewHolder{
-            TextView textViewtag,textViewS_QuotationID,textViewR_RecordCompany, textViewS_InvName,
-                    textViewS_InvVersion,textViewS_Verifyer,textViewS_State,textViewS_RegisterDate,
+            TextView textViewtag,textViewS_QuotationID,textViewR_RecordCompany, textViewS_Verifyer,textViewS_State,textViewS_RegisterDate,
                     textViewM_MSN;
             LinearLayout linearLayout;
             ImageView imageViewTag;
@@ -302,8 +301,7 @@ public class SampleListActivity extends BaseActivity {
                 textViewtag=itemView.findViewById(R.id.tv_tag);
                 textViewS_QuotationID=itemView.findViewById(R.id.tv_S_QuotationID);
                 textViewR_RecordCompany=itemView.findViewById(R.id.tv_R_RecordCompany);
-                textViewS_InvName=itemView.findViewById(R.id.tv_S_InvName);
-                textViewS_InvVersion=itemView.findViewById(R.id.tv_S_InvVersion);
+
                 textViewS_Verifyer=itemView.findViewById(R.id.tv_S_Verifyer);
                 textViewS_State=itemView.findViewById(R.id.tv_S_State);
                 textViewS_RegisterDate=itemView.findViewById(R.id.tv_S_RegisterDate);

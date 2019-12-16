@@ -34,7 +34,7 @@ public class SampleTypeActivity extends BaseActivity {
         stringList.add("样片&评估板&管芯");
         stringList.add("MCU工程品发放申请");
         stringList.add("MM32-Motor-DK申请");
-        stringList.add("样品申请审批");
+        stringList.add("我的审批任务");
         stringList.add("我的样品申请");
 
         FunctionAdapter functionAdapter=new FunctionAdapter(stringList);
@@ -125,7 +125,7 @@ public class SampleTypeActivity extends BaseActivity {
                             break;
                         case 3:
                             intent=new Intent(SampleTypeActivity.this,SampleListActivity.class);
-                            intent.putExtra("menuname","样品申请审批");
+                            intent.putExtra("menuname","我的审批任务");
                             intent.putExtra("type","");
                             break;
                         case 4:

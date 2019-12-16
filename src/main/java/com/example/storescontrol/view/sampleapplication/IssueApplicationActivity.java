@@ -151,6 +151,7 @@ public class IssueApplicationActivity extends BaseActivity {
                       }else {
                           intent=new Intent(IssueApplicationActivity.this,DkDetailsActivity.class);
                       }
+                      intent.putExtra("form",1);
                       intent.putExtra("type",getIntent().getStringExtra("type"));
                       intent.putExtra("menuname",getIntent().getStringExtra("menuname"));
                       startActivity(intent);
@@ -169,6 +170,27 @@ public class IssueApplicationActivity extends BaseActivity {
                       startActivity(intent);
                       break;
                   case R.id.b_submit:
+                      if(binding.tvPersonnel.getText().toString().isEmpty()){
+                          Toast.makeText(IssueApplicationActivity.this,"销售人员不能为空！",Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+                      if(binding.tvRecordcompany.getText().toString().isEmpty()){
+                          Toast.makeText(IssueApplicationActivity.this,"客户名称不能为空！",Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+                      if(binding.etSPerson.getText().toString().isEmpty()){
+                          Toast.makeText(IssueApplicationActivity.this,"收货联系人不能为空！",Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+                      if(binding.etSPhone.getText().toString().isEmpty()){
+                          Toast.makeText(IssueApplicationActivity.this,"收货人联系电话不能为空！",Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+                      if(binding.etSAddress.getText().toString().isEmpty()){
+                          Toast.makeText(IssueApplicationActivity.this,"收货人联系地址不能为空！",Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+
                       SampleApplicationBean bean=Untils.getSampleApplicationBean(IssueApplicationActivity.this);
                       putData(bean);
 
@@ -490,6 +512,8 @@ public class IssueApplicationActivity extends BaseActivity {
                      }else {
                          intent=new Intent(IssueApplicationActivity.this,DkDetailsActivity.class);
                      }
+                     intent.putExtra("position",i);
+                     intent.putExtra("form",getIntent().getIntExtra("form",2));
                      intent.putExtra("Product",mDatas.get(i));
                      intent.putExtra("type",getIntent().getStringExtra("type"));
                      startActivity(intent);

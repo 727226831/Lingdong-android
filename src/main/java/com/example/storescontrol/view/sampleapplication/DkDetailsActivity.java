@@ -28,18 +28,28 @@ public class DkDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(DkDetailsActivity.this,R.layout.activity_dk_details);
         Untils.initTitle("Motor DK",this);
-        if(getIntent().getParcelableExtra("Product")!=null){
-            bean=getIntent().getParcelableExtra("Product");
-        }else {
-            Log.i("is run","");
-            bean=new SampleApplicationBean.Product();
-            bean.setS_InvDefine1("");
+
+
+        switch (getIntent().getIntExtra("form",-1)){
+
+            case 1:
+                bean=new SampleApplicationBean.Product();
+                bean.setS_InvDefine1("");
+                break;
+            case 2:
+                bean=getIntent().getParcelableExtra("Product");
+                break;
+            case 3:
+                bean=getIntent().getParcelableExtra("Product");
+                binding.bSubmit.setVisibility(View.GONE);
+                break;
         }
         Untils.setProductBean(DkDetailsActivity.this,bean);
 
         binding.tvModel.setOnClickListener(onClickListener);
         binding.tvField.setOnClickListener(onClickListener);
         binding.tvDescription.setOnClickListener(onClickListener);
+        binding.bSubmit.setOnClickListener(onClickListener);
         binding.etQty.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -156,6 +166,26 @@ public class DkDetailsActivity extends BaseActivity {
                     break;
 
                 case R.id.b_submit:
+                    if(binding.tvModel.getText().toString().isEmpty()){
+                        Toast.makeText(DkDetailsActivity.this, "请选择产品型号", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.etQty.getText().toString().isEmpty()){
+                        Toast.makeText(DkDetailsActivity.this, "请填写申请数量", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.etQty.getText().toString().isEmpty()){
+                        Toast.makeText(DkDetailsActivity.this, "请填写申请数量", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.tvField.getText().toString().isEmpty()){
+                        Toast.makeText(DkDetailsActivity.this, "应用领域不能为空", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(binding.tvDescription.getText().toString().isEmpty()){
+                        Toast.makeText(DkDetailsActivity.this, "应用描述不能为空", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     SampleApplicationBean sampleApplicationBean=Untils.getSampleApplicationBean(DkDetailsActivity.this);
                     SampleApplicationBean.Product product=Untils.getProductBean(DkDetailsActivity.this);
                     sampleApplicationBean.getJ_SampleDetails().add(product);

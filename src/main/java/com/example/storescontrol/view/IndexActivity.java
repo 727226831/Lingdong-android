@@ -86,7 +86,12 @@ public class IndexActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(@NonNull  FunctionAdapter.VH vh, final int i) {
+            if(userinfoBean.getData().get(i).getVoucherCount().equals("0")){
+                vh.textViewTag.setVisibility(View.GONE);
+            }
+            vh.textViewTag.setText(userinfoBean.getData().get(i).getVoucherCount());
             vh.funcationButton.setText(userinfoBean.getData().get(i).getMenuname());
+
             vh.funcationButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,17 +109,7 @@ public class IndexActivity extends BaseActivity {
                 }
             });
             Drawable drawableLeft = null;
-            if(userinfoBean.getData().get(i).getMenuname().contains("入库")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_input);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("出库")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_put);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("盘点")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_inventory);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("查询")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_search);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("调整")){
-                drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.ic_dbrk);
-            }else if(userinfoBean.getData().get(i).getMenuname().contains("报价审批")){
+           if(userinfoBean.getData().get(i).getMenuname().contains("报价审批")){
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.apprival);
             }else if(userinfoBean.getData().get(i).getMenuname().contains("样品申请")){
                 drawableLeft = IndexActivity.this.getResources().getDrawable(R.mipmap.apprival);
@@ -129,9 +124,11 @@ public class IndexActivity extends BaseActivity {
         }
         class  VH extends RecyclerView.ViewHolder{
             Button funcationButton;
+            TextView textViewTag;
             public VH(@NonNull View itemView) {
                 super(itemView);
                 funcationButton=itemView.findViewById(R.id.b_funcation);
+                textViewTag=itemView.findViewById(R.id.tv_tag);
             }
         }
     }

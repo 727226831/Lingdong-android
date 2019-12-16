@@ -225,7 +225,7 @@ public class TaskListActivity extends BaseActivity {
             vh.textViewS_InvName.setText("型号："+mDatas.get(i).getS_InvName());
             vh.textViewR_RecordCompany.setText("客户："+mDatas.get(i).getR_RecordCompany());
             vh.textViewS_Verifyer.setText("销售："+mDatas.get(i).getS_Verifyer());
-            vh.textViewM_MSN.setText("供应商："+mDatas.get(i).getM_MSN());
+            vh.textViewM_MSN.setText("代理商："+mDatas.get(i).getM_MSN());
 
 
             if(sharedPreferences.getBoolean(mDatas.get(i).getS_QuotationID(),false)){
