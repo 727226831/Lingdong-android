@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -19,8 +20,7 @@ import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
 import com.example.storescontrol.bean.LoginBean;
 import com.example.storescontrol.databinding.ActivityIndexBinding;
-import com.example.storescontrol.view.declaration.ReportActivity;
-import com.example.storescontrol.view.sale.DispatchActivity;
+
 import com.example.storescontrol.view.sampleapplication.SampleTypeActivity;
 import com.example.storescontrol.view.task.TaskListActivity;
 import com.google.gson.Gson;
@@ -52,6 +52,7 @@ public class IndexActivity extends BaseActivity {
 
         titleTv=binding.getRoot().findViewById(R.id.tv_title);
         titleTv.setText("首页");
+        binding.lTitle.setBackgroundColor(Color.TRANSPARENT);
 
         textViewExit=binding.getRoot().findViewById(R.id.tv_exit);
         textViewExit.setVisibility(View.VISIBLE);

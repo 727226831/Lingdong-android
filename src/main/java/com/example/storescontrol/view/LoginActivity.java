@@ -103,13 +103,11 @@ public class LoginActivity extends BaseActivity {
 
         sharedPreferences= getSharedPreferences("sp", Context.MODE_PRIVATE);
         if(sharedPreferences.getString("port","").equals("")){
-//            Request.BASEURL=Request.URL_WKF;
-             Request.BASEURL=Request.URL_LD;
-//             Request.BASEURL=Request.URL_AR;
+             Request.BASEURL=Request.URL_LD8090;
             sharedPreferences.edit().putString("port",Request.BASEURL).commit();
         }
         Request.URL=sharedPreferences.getString("port","");
-        if(Request.URL.equals(Request.URL_LD)){
+        if(Request.URL.equals(Request.URL_LD8090)){
             activityLoginBinding.cbType.setVisibility(View.VISIBLE);
         }
 

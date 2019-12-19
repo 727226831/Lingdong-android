@@ -3,7 +3,6 @@ package com.example.storescontrol.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskBean implements Parcelable {
@@ -55,7 +54,7 @@ public class TaskBean implements Parcelable {
         private String S_ProjectName;
         private String S_UseQty;
         private String S_Qty;
-        private String p_id;
+        private String P_Id;
 
         public String getM_MSN() {
             return M_MSN;
@@ -67,12 +66,12 @@ public class TaskBean implements Parcelable {
 
         private String M_MSN;
 
-        public String getP_id() {
-            return p_id;
+        public String getP_Id() {
+            return P_Id;
         }
 
-        public void setP_id(String p_id) {
-            this.p_id = p_id;
+        public void setP_Id(String p_Id) {
+            this.P_Id = p_Id;
         }
 
         public String getP_RowNo() {
@@ -293,7 +292,7 @@ public class TaskBean implements Parcelable {
             dest.writeString(this.S_ProjectName);
             dest.writeString(this.S_UseQty);
             dest.writeString(this.S_Qty);
-            dest.writeString(this.p_id);
+            dest.writeString(this.P_Id);
             dest.writeString(this.M_MSN);
             dest.writeString(this.P_RowNo);
             dest.writeString(this.S_Id);
@@ -321,7 +320,7 @@ public class TaskBean implements Parcelable {
             this.S_ProjectName = in.readString();
             this.S_UseQty = in.readString();
             this.S_Qty = in.readString();
-            this.p_id = in.readString();
+            this.P_Id = in.readString();
             this.M_MSN = in.readString();
             this.P_RowNo = in.readString();
             this.S_Id = in.readString();

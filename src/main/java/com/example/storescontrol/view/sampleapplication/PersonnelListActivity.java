@@ -1,7 +1,6 @@
 package com.example.storescontrol.view.sampleapplication;
 
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,13 +18,9 @@ import android.widget.Toast;
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
 import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.bean.DetailsBean;
 import com.example.storescontrol.bean.PersonnelBean;
 import com.example.storescontrol.bean.SampleApplicationBean;
-import com.example.storescontrol.bean.TROutBywhcodeBean;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.DetailListActivity;
-import com.example.storescontrol.view.ProductionListActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

@@ -4,28 +4,18 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.nfc.cardemulation.HostNfcFService;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,31 +26,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.storescontrol.BuildConfig;
 import com.example.storescontrol.R;
 import com.example.storescontrol.Url.FileUtil;
 import com.example.storescontrol.Url.Request;
 import com.example.storescontrol.Url.Untils;
 import com.example.storescontrol.bean.AgmentBean;
-import com.example.storescontrol.bean.ClientBean;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.bean.UplodaBean;
 import com.example.storescontrol.databinding.ActivityIssueApplicationBinding;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.ProductionwarehousingActivity;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -100,6 +83,7 @@ public class IssueApplicationActivity extends BaseActivity {
 
         binding.bUploadFile.setOnClickListener(onClickListener);
         if(getIntent().getParcelableExtra("SampleApplicationBean")==null){
+            //新增
             bean=new SampleApplicationBean();
             if(getIntent().getStringExtra("type").equals("YP")){
                 bean.setS_AppType("样片&评估板");
@@ -114,6 +98,9 @@ public class IssueApplicationActivity extends BaseActivity {
         }else {
             bean=getIntent().getParcelableExtra("SampleApplicationBean");
             binding.lApproval.setVisibility(View.VISIBLE);
+            binding.bApplicationdetails.setVisibility(View.GONE);
+            binding.bUploadFile.setVisibility(View.GONE);
+            binding.lFeedback.setVisibility(View.GONE);
             Log.i("bean-->",new Gson().toJson(bean));
             if(getIntent().getBooleanExtra("isApproved",false)){
                 binding.bExit.setVisibility(View.VISIBLE);
@@ -236,17 +223,17 @@ public class IssueApplicationActivity extends BaseActivity {
                   break;
               case 1:
                   jsonObject.put("methodname","AgreeSample");
-                  jsonObject.put("P_AuditMemo","");
+                  jsonObject.put("P_AuditMemo",binding.etMemo.getText().toString());
                   jsonObject.put("P_Id",bean.getP_Id());
                   break;
               case 2:
                   jsonObject.put("methodname","UnAgreeSample");
-                  jsonObject.put("P_AuditMemo","");
+                  jsonObject.put("P_AuditMemo",binding.etMemo.getText().toString());
                   jsonObject.put("P_Id",bean.getP_Id());
                   break;
               case 3:
                   jsonObject.put("methodname","RollBackSample");
-                  jsonObject.put("P_AuditMemo","");
+                  jsonObject.put("P_AuditMemo",binding.etMemo.getText().toString());
                   jsonObject.put("P_Id",bean.getP_Id());
                   break;
           }
@@ -553,7 +540,7 @@ public class IssueApplicationActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(@NonNull FileAdapter.VH vh, final int i) {
-            vh.textViewDetails.setText("附件："+mDatas.get(i));
+            vh.textViewDetails.setText("附件："+(i+1));
 
         }
 
@@ -572,6 +559,7 @@ public class IssueApplicationActivity extends BaseActivity {
         }
     }
     private void addTextWatcher() {
+
         binding.etFeedback.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

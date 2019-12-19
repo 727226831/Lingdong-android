@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.example.storescontrol.view.sampleapplication.IssueApplicationActivity">
     <include
         android:id="@+id/l_title"
@@ -224,7 +225,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_listFile"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"/>
+                android:layout_height="50dp"/>
             <Button
                 android:id="@+id/b_uploadFile"
                 android:layout_margin="10dp"
@@ -235,6 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <LinearLayout
+                android:id="@+id/l_feedback"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -246,6 +248,7 @@
                     android:text="客户试用反馈意见或建议（一周内）："
                     />
                 <EditText
+                    android:text="@{bean.s_Feedback}"
                     android:id="@+id/et_feedback"
                     android:hint="发出后一周内反馈客户试用反馈意见或建议"
                     android:padding="5dp"
@@ -267,6 +270,7 @@
                     android:text="备注："
                     />
                 <EditText
+                    android:text="@{bean.s_Memo}"
                     android:id="@+id/et_memo"
                     android:hint="请输入"
                     android:padding="5dp"
@@ -283,7 +287,7 @@
                 android:textSize="20sp"
                 android:text="提交"
                 android:textColor="@color/white"
-                android:background="@color/blue"
+                android:background="@drawable/round_blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <LinearLayout
@@ -299,7 +303,7 @@
                     android:textSize="20sp"
                     android:text="提交"
                     android:textColor="@color/white"
-                    android:background="@color/blue"
+                    android:background="@drawable/round_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <Button
@@ -310,7 +314,7 @@
                     android:textSize="20sp"
                     android:text="同意"
                     android:textColor="@color/white"
-                    android:background="@color/blue"
+                    android:background="@drawable/round_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <Button
@@ -321,7 +325,7 @@
                     android:textSize="20sp"
                     android:text="不同意"
                     android:textColor="@color/white"
-                    android:background="@color/blue"
+                    android:background="@drawable/round_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <Button
@@ -332,7 +336,7 @@
                     android:textSize="20sp"
                     android:text="撤销"
                     android:textColor="@color/white"
-                    android:background="@color/blue"
+                    android:background="@drawable/round_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

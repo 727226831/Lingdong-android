@@ -6,17 +6,19 @@
             type="com.example.storescontrol.bean.LoginBean"/>
     </data>
     <RelativeLayout
+        android:fitsSystemWindows="true"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
+        android:background="@mipmap/bg_index"
+
         tools:context=".view.IndexActivity">
         <include
             android:id="@+id/l_title"
             layout="@layout/layout_title"/>
         <RelativeLayout
-           android:background="@color/blue"
-            android:padding="10dp"
+
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:id="@+id/l_info"
@@ -24,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:padding="5dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -81,14 +84,14 @@
             android:layout_below="@id/l_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                style="@style/line"
-                android:layout_alignParentBottom="true"
-                ></LinearLayout>
+
             <android.support.v7.widget.RecyclerView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="@drawable/bg_round"
                 android:id="@+id/rv_function"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
 
         </RelativeLayout>

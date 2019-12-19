@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.PutListActivity">
+    android:fitsSystemWindows="true"
+    >
     <include
         android:id="@+id/l_title"
         layout="@layout/layout_title"/>

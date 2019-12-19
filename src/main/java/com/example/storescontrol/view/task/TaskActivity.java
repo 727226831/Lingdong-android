@@ -1,11 +1,7 @@
 package com.example.storescontrol.view.task;
 
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +16,6 @@ import com.example.storescontrol.bean.LoginBean;
 import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.databinding.ActivityTaskBinding;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.ProductionwarehousingActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -45,6 +40,7 @@ public class TaskActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
          binding= DataBindingUtil.setContentView(TaskActivity.this,R.layout.activity_task);
         data=getIntent().getParcelableExtra("taskBean");
+
         binding.setBean(data);
         Untils.initTitle("详细单据",this);
         binding.bAgree.setOnClickListener(onClickListener);
@@ -102,9 +98,11 @@ public class TaskActivity extends BaseActivity {
 
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put(" P_IsMOQ",isMoq);
-            jsonObject.put("P_Id",data.getP_id());
-
+            jsonObject.put("P_IsMOQ",isMoq);
+            jsonObject.put("P_Id",data.getP_Id());
+            jsonObject.put("S_Id",data.getS_Id());
+            jsonObject.put("methodname","SubmitMOQ");
+            jsonObject.put("usercode",acccode);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -119,7 +117,7 @@ public class TaskActivity extends BaseActivity {
         Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(Request.URL).build();
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
         iUrl login = retrofit.create(iUrl.class);
-        Call<ResponseBody> call = login.updateMoq(body);
+        Call<ResponseBody> call = login.getMessage(body);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -138,21 +136,27 @@ public class TaskActivity extends BaseActivity {
     }
     private void putData(String auditStatus ) {
 
-        if(auditStatus.equals("同意")){
-            auditStatus="已审核";
-        }else  if(auditStatus.equals("不同意")){
-            auditStatus="已拒收";
-        }else  if(auditStatus.equals("撤回")){
-            auditStatus="未审核";
-        }
+
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("P_AuditStatus",auditStatus);
+
+
             jsonObject.put("P_AuditMemo",binding.etPAuditMemo.getText().toString());
-            jsonObject.put("P_Id",data.getP_id());
+            jsonObject.put("P_Id",data.getP_Id());
             jsonObject.put("S_Id",data.getS_Id());
-            jsonObject.put("P_RowNo",Integer.parseInt(data.getP_RowNo())+1);
-            jsonObject.put("S_QuotationID",data.getS_QuotationID());
+            jsonObject.put("usercode",acccode);
+            if(auditStatus.equals("同意")){
+
+                jsonObject.put("methodname","AgreePrice");
+            }else  if(auditStatus.equals("不同意")){
+
+                jsonObject.put("methodname","UnAgreePrice");
+            }else  if(auditStatus.equals("撤回")){
+
+                jsonObject.put("methodname","RollBackPrice");
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -164,10 +168,10 @@ public class TaskActivity extends BaseActivity {
                 readTimeout(120, TimeUnit.SECONDS).
                 writeTimeout(120, TimeUnit.SECONDS).build();
 
-        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(Request.URL).build();
+        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(Request.URL_LD8090).build();
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
         iUrl login = retrofit.create(iUrl.class);
-        Call<ResponseBody> call = login.taskApproval(body);
+        Call<ResponseBody> call = login.getMessage(body);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {

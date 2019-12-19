@@ -2,11 +2,8 @@ package com.example.storescontrol.view.task;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,8 +16,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,19 +23,14 @@ import com.example.storescontrol.R;
 import com.example.storescontrol.Url.Request;
 import com.example.storescontrol.Url.Untils;
 import com.example.storescontrol.Url.iUrl;
-import com.example.storescontrol.bean.TROutBywhcodeBean;
 import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.DetailListActivity;
-import com.example.storescontrol.view.LoginActivity;
-import com.example.storescontrol.view.ProductionListActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -77,20 +67,12 @@ public class TaskListActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                List<TaskBean.Data> data=new ArrayList<>();
-                Log.i("onTextChanged->",charSequence.toString());
-                for (int j = 0; j <taskBean.getData().size() ; j++) {
-                    String bean=new Gson().toJson(taskBean.getData().get(j));
-                    if(bean.contains(charSequence
-                    )){
-                        data.add(taskBean.getData().get(j));
-                    }
-                }
-                initAdapter(data);
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+                getData(listType,editable.toString());
 
             }
         });
@@ -99,7 +81,7 @@ public class TaskListActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                getData(tab.getPosition());
+                getData(tab.getPosition(),"");
 
             }
 
@@ -128,7 +110,7 @@ public class TaskListActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-       getData(listType);
+       getData(listType,"");
     }
 
     @Override
@@ -136,13 +118,24 @@ public class TaskListActivity extends BaseActivity {
         super.onResume();
     }
 
-    private void getData(final int type) {
+    private void getData(final int type,String keyword) {
          listType=type;
 
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("acccode",acccode);
-            jsonObject.put("type",type);
+            jsonObject.put("usercode",acccode);
+
+            jsonObject.put("methodname","PriceAuditList");
+            switch (type){
+                case 0:
+                    jsonObject.put("auditstatus","待审批");
+                    break;
+                case 1:
+                    jsonObject.put("auditstatus","已审批");
+                    break;
+            }
+            jsonObject.put("keyword",keyword);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -150,46 +143,61 @@ public class TaskListActivity extends BaseActivity {
         Log.i("json object",obj);
 
         OkHttpClient client = new OkHttpClient.Builder().
-                connectTimeout(120, TimeUnit.SECONDS).
-                readTimeout(120, TimeUnit.SECONDS).
-                writeTimeout(120, TimeUnit.SECONDS).build();
+                connectTimeout(10, TimeUnit.SECONDS).
+                readTimeout(10, TimeUnit.SECONDS).
+                writeTimeout(10, TimeUnit.SECONDS).build();
 
-        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(Request.URL).build();
+        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(Request.URL_LD8090).build();
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),obj);
         iUrl login = retrofit.create(iUrl.class);
-        Call<ResponseBody> call = login.tasklist(body);
+        Call<ResponseBody> call = login.getMessage(body);
+        Log.i("ResponseBody",call.request().url().toString());
+        dialog.show();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
-
+                     dialog.dismiss();
 
                     if(response.code()==200) {
 
                         try {
                             taskBean = new Gson().fromJson(response.body().string(), TaskBean.class);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
 
-                        if(type==0){
-                            tabLayout.getTabAt(0).setText("待审批("+taskBean.getData().size()+")");
-                        }else if(type==1) {
-                            tabLayout.getTabAt(1).setText("已审批("+taskBean.getData().size()+")");
+                        if(taskBean.getResultcode().equals("200")){
+                            if(type==0){
+                                tabLayout.getTabAt(0).setText("待审批("+taskBean.getData().size()+")");
+                            }else if(type==1) {
+                                tabLayout.getTabAt(1).setText("已审批("+taskBean.getData().size()+")");
+                            }
+
+                            initAdapter(taskBean.getData());
+                        }else {
+                            Toast.makeText(TaskListActivity.this, taskBean.getResultMessage(), Toast.LENGTH_LONG).show();
+                            recyclerView.setVisibility(View.GONE);
                         }
-                        initAdapter(taskBean.getData());
 
 
+
+                    }else {
+                      recyclerView.setVisibility(View.GONE);
                     }
 
 
             }
             @Override
             public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
-
+                dialog.dismiss();
+                Log.i("onFailure",t.toString());
+                recyclerView.setVisibility(View.GONE);
             } });
     }
 
     private void initAdapter(List<TaskBean.Data> data) {
+        recyclerView.setVisibility(View.VISIBLE);
         functionAdapter = new FunctionAdapter(data);
         recyclerView.setLayoutManager(new LinearLayoutManager(TaskListActivity.this));
         recyclerView.addItemDecoration(new DividerItemDecoration(TaskListActivity.this, DividerItemDecoration.VERTICAL));

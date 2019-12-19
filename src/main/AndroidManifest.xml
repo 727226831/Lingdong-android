@@ -50,21 +50,7 @@
         <!-- 配置Bugly调试模式（true或者false） -->
         <activity android:name=".view.PortActivity" />
         <activity android:name=".view.IndexActivity" />
-        <activity android:name=".view.ScanActivity" />
-        <activity android:name=".view.PutListActivity" />
-        <activity
-            android:name=".view.ProductionwarehousingActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity android:name=".view.ProductionListActivity" />
-        <activity android:name=".view.DetailListActivity" />
-        <activity android:name=".view.StockcheckActivity" />
-        <activity android:name=".view.sale.DispatchActivity" />
-        <activity android:name=".view.sale.SaleActivity" />
-        <activity android:name=".view.PrintActivity" />
-        <activity android:name=".view.declaration.ReportActivity" />
-        <activity
-            android:name=".view.declaration.MaterialActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
 
         <meta-data
             android:name="BUGLY_APPID"

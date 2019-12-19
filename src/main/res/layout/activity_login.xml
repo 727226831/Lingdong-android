@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
+
    android:background="@mipmap/bg"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
 
 
@@ -79,7 +79,7 @@
         android:layout_marginTop="@dimen/layout_margin"
         android:textSize="18sp"
         android:textColor="@android:color/white"
-        android:background="@color/blue"
+        android:background="@drawable/round_blue"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:id="@+id/b_login"
