@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.databinding.ActivityDkDetailsBinding;
 import com.example.storescontrol.view.BaseActivity;
@@ -138,7 +137,7 @@ public class DkDetailsActivity extends BaseActivity {
                 case R.id.tv_model:
 
                     intent=new Intent(DkDetailsActivity.this, ModelListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType",getIntent().getStringExtra("userType"));
                     startActivity(intent);
                     break;
                 case R.id.tv_field:
@@ -161,7 +160,7 @@ public class DkDetailsActivity extends BaseActivity {
                         return;
                     }
                     intent=new Intent(DkDetailsActivity.this, DescriptionListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType",getIntent().getStringExtra("userType"));
                     startActivity(intent);
                     break;
 

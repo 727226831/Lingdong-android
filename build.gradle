@@ -16,7 +16,7 @@ android {
         }
 
         applicationId "com.example.storescontrol.lingdong"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.9"
@@ -27,6 +27,16 @@ android {
                 GETUI_APP_SECRET: "CBsUpwsGnA86jJ2gCYDVe6"
         ]
 
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //apk_地区名-版本号-版本名称-编译时间.apk
+                def fileName = "MMS_${defaultConfig.versionName}.apk"
+                outputFileName = fileName
+            }
+        }
     }
     buildTypes {
         release {

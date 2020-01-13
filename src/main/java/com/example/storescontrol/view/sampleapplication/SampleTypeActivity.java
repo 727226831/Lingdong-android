@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.databinding.ActivitySampleTypeBinding;
 import com.example.storescontrol.view.BaseActivity;
 
@@ -44,47 +44,10 @@ public class SampleTypeActivity extends BaseActivity {
         binding.rvList.setAdapter(functionAdapter);
 
 
-//        binding.lOne.setOnClickListener(onClickListenern);
-//        binding.lTwo.setOnClickListener(onClickListenern);
-//        binding.lThree.setOnClickListener(onClickListenern);
-//        binding.lFour.setOnClickListener(onClickListenern);
-
 
 
     }
-    View.OnClickListener onClickListenern=new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent=null;
 
-            switch (v.getId()){
-//                case R.id.l_one:
-//                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
-//                    intent.putExtra("menuname","样片&评估板&管芯");
-//                    intent.putExtra("type","YP");
-//                    break;
-//                case R.id.l_two:
-//                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
-//                    intent.putExtra("menuname","MCU工程品发放申请");
-//                    intent.putExtra("type","GC");
-//                    break;
-//                case R.id.l_three:
-//                    intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
-//                    intent.putExtra("menuname","MM32-Motor-DK申请");
-//                    intent.putExtra("type","");
-//                    break;
-//                case R.id.l_four:
-//                    intent=new Intent(SampleTypeActivity.this,SampleListActivity.class);
-//                    intent.putExtra("menuname","样品申请审批");
-//                    intent.putExtra("type","");
-//                    break;
-
-
-            }
-
-            startActivity(intent);
-        }
-    };
     class FunctionAdapter extends RecyclerView.Adapter<FunctionAdapter.VH>{
 
         @NonNull
@@ -111,27 +74,27 @@ public class SampleTypeActivity extends BaseActivity {
                         case 0:
                             intent= new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                             intent.putExtra("menuname","样片&评估板&管芯");
-                            intent.putExtra("type","YP");
+                            intent.putExtra("userType","YP");
                             break;
                         case 1:
                             intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                             intent.putExtra("menuname","MCU工程品发放申请");
-                            intent.putExtra("type","GC");
+                            intent.putExtra("userType","GC");
                             break;
                         case 2:
                             intent=new Intent(SampleTypeActivity.this,IssueApplicationActivity.class);
                             intent.putExtra("menuname","MM32-Motor-DK申请");
-                            intent.putExtra("type","");
+                            intent.putExtra("userType","");
                             break;
                         case 3:
                             intent=new Intent(SampleTypeActivity.this,SampleListActivity.class);
                             intent.putExtra("menuname","我的审批任务");
-                            intent.putExtra("type","");
+                            intent.putExtra("userType","");
                             break;
                         case 4:
                             intent=new Intent(SampleTypeActivity.this, MySampleActivity.class);
                             intent.putExtra("menuname","样品申请列表");
-                            intent.putExtra("type","");
+                            intent.putExtra("userType","");
                             break;
                     }
 

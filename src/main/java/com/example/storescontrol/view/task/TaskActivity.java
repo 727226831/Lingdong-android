@@ -9,9 +9,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.Url.iUrl;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
+import com.example.storescontrol.url.iUrl;
 import com.example.storescontrol.bean.LoginBean;
 import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.databinding.ActivityTaskBinding;
@@ -46,18 +46,20 @@ public class TaskActivity extends BaseActivity {
         binding.bAgree.setOnClickListener(onClickListener);
         binding.bDisagree.setOnClickListener(onClickListener);
         binding.bExit.setOnClickListener(onClickListener);
-        int listtype=getIntent().getIntExtra("type",-1);
-        switch (listtype){
-            case -1:
-                binding.rlBottom.setVisibility(View.GONE);
-                break;
-            case 0:
-                binding.bAgree.setVisibility(View.VISIBLE);
-                binding.bDisagree.setVisibility(View.VISIBLE);
-                break;
-            case 1:
-                binding.bExit.setVisibility(View.VISIBLE);
-                break;
+        int listtype=getIntent().getIntExtra("userType",-1);
+        if(userType==1) {
+            switch (listtype) {
+                case -1:
+                    binding.rlBottom.setVisibility(View.GONE);
+                    break;
+                case 0:
+                    binding.bAgree.setVisibility(View.VISIBLE);
+                    binding.bDisagree.setVisibility(View.VISIBLE);
+                    break;
+                case 1:
+                    binding.bExit.setVisibility(View.VISIBLE);
+                    break;
+            }
         }
 
         if(data.getP_RowNo().equals("1")){
@@ -84,7 +86,7 @@ public class TaskActivity extends BaseActivity {
     View.OnClickListener onClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Log.i("is moq",isMoq.isEmpty()+"");
+
 
             if(isMoq.equals("是")) {
                 Button button = findViewById(view.getId());

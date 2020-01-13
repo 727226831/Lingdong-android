@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:background="@color/blue"
     >
     <include
         android:id="@+id/l_title"
@@ -35,7 +36,7 @@
     </android.support.design.widget.TabLayout>
 
     <EditText
-
+        android:background="@color/white"
         android:singleLine="true"
         android:hint="请输入搜索内容"
         android:id="@+id/et_search"
@@ -43,7 +44,7 @@
         android:layout_height="50dp"/>
 
     <android.support.v7.widget.RecyclerView
-
+        android:background="@color/white"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

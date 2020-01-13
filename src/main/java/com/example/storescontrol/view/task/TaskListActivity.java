@@ -20,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.Url.iUrl;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
+import com.example.storescontrol.url.iUrl;
 import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
 import com.google.gson.Gson;
@@ -253,17 +253,17 @@ public class TaskListActivity extends BaseActivity {
                     sharedPreferences.edit().putBoolean(mDatas.get(i).getS_QuotationID(),true).commit();
                     vh.imageViewTag.setVisibility(View.GONE);
 
-                    if(type==1) {
+
                         Intent intent = new Intent(TaskListActivity.this, TaskActivity.class);
                         intent.putExtra("taskBean", mDatas.get(i));
                         if(acccode.equals("15")){
-                            intent.putExtra("type",-1);
+                            intent.putExtra("userType",-1);
                         }else {
-                            intent.putExtra("type",listType);
+                            intent.putExtra("userType",listType);
                         }
 
                         startActivity(intent);
-                    }
+
 
 
                 }

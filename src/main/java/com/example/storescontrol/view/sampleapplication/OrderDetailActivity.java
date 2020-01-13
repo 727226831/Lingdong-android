@@ -12,11 +12,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.databinding.ActivityOrderDetailBinding;
 import com.example.storescontrol.view.BaseActivity;
-import com.google.gson.Gson;
 
 public class OrderDetailActivity extends BaseActivity {
       ActivityOrderDetailBinding binding;
@@ -36,7 +35,7 @@ public class OrderDetailActivity extends BaseActivity {
         binding.tvModelAC.setOnClickListener(onClickListener);
         binding.bSubmit.setOnClickListener(onClickListener);
 
-        if(getIntent().getStringExtra("type").equals("GC")){
+        if(getIntent().getStringExtra("userType").equals("GC")){
           binding.lInvNameAC.setVisibility(View.VISIBLE);
           binding.lInvVersionAC.setVisibility(View.VISIBLE);
         }
@@ -120,7 +119,7 @@ public class OrderDetailActivity extends BaseActivity {
                 case R.id.tv_family:
 
                     intent=new Intent(OrderDetailActivity.this,FamilyListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType",getIntent().getStringExtra("userType"));
                     startActivity(intent);
                     break;
                 case R.id.tv_model:
@@ -129,7 +128,7 @@ public class OrderDetailActivity extends BaseActivity {
                         return;
                     }
                     intent=new Intent(OrderDetailActivity.this, ModelListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType",getIntent().getStringExtra("userType"));
                     startActivity(intent);
                     break;
                 case R.id.tv_model_AC:
@@ -138,7 +137,7 @@ public class OrderDetailActivity extends BaseActivity {
                         return;
                     }
                     intent=new Intent(OrderDetailActivity.this, ModelListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType","AC");
                     startActivity(intent);
                     break;
                 case R.id.tv_field:
@@ -161,7 +160,7 @@ public class OrderDetailActivity extends BaseActivity {
                         return;
                     }
                     intent=new Intent(OrderDetailActivity.this, DescriptionListActivity.class);
-                    intent.putExtra("type",getIntent().getStringExtra("type"));
+                    intent.putExtra("userType",getIntent().getStringExtra("userType"));
                     startActivity(intent);
                     break;
                 case R.id.b_submit:

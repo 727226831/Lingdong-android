@@ -9,18 +9,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.BuildConfig;
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.LoginBean;
-import com.example.storescontrol.Url.iUrl;
+import com.example.storescontrol.url.iUrl;
 import com.example.storescontrol.databinding.ActivityLoginBinding;
-import com.example.storescontrol.service.DemoIntentService;
-import com.example.storescontrol.service.DemoPushService;
 import com.google.gson.Gson;
 import com.igexin.sdk.PushManager;
 
@@ -74,9 +71,9 @@ public class LoginActivity extends BaseActivity {
              @Override
              public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                  if(b){
-                     type=2;
+                     userType =2;
                  }else {
-                     type=1;
+                     userType =1;
                  }
                  editor.putBoolean("isAgent",b).commit();
 

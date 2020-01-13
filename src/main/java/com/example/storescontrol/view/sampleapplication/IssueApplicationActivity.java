@@ -27,9 +27,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.FileUtil;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.FileUtil;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.AgmentBean;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.bean.UplodaBean;
@@ -64,9 +64,9 @@ public class IssueApplicationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
        binding= DataBindingUtil.setContentView(IssueApplicationActivity.this,R.layout.activity_issue_application);
 
-        if(getIntent().getStringExtra("type").equals("YP")){
+        if(getIntent().getStringExtra("userType").equals("YP")){
             Untils.initTitle("样片&评估板&管芯",this);
-        }else   if(getIntent().getStringExtra("type").equals("GC")){
+        }else   if(getIntent().getStringExtra("userType").equals("GC")){
             Untils.initTitle("MCU工程品发放申请",this);
         }else {
             Untils.initTitle("MM32-Motor-DK申请",this);
@@ -85,9 +85,9 @@ public class IssueApplicationActivity extends BaseActivity {
         if(getIntent().getParcelableExtra("SampleApplicationBean")==null){
             //新增
             bean=new SampleApplicationBean();
-            if(getIntent().getStringExtra("type").equals("YP")){
+            if(getIntent().getStringExtra("userType").equals("YP")){
                 bean.setS_AppType("样片&评估板");
-            }else   if(getIntent().getStringExtra("type").equals("GC")){
+            }else   if(getIntent().getStringExtra("userType").equals("GC")){
                 bean.setS_AppType("工程品");
             }else {
                 bean.setS_AppType("Motor DK");
@@ -130,16 +130,16 @@ public class IssueApplicationActivity extends BaseActivity {
             Intent  intent=null;
               switch (view.getId()){
                   case R.id.b_applicationdetails:
-                      if(getIntent().getStringExtra("type").equals("YP")){
+                      if(getIntent().getStringExtra("userType").equals("YP")){
                           intent=new Intent(IssueApplicationActivity.this,OrderDetailActivity.class);
 
-                      }else   if(getIntent().getStringExtra("type").equals("GC")){
+                      }else   if(getIntent().getStringExtra("userType").equals("GC")){
                           intent=new Intent(IssueApplicationActivity.this,OrderDetailActivity.class);
                       }else {
                           intent=new Intent(IssueApplicationActivity.this,DkDetailsActivity.class);
                       }
                       intent.putExtra("form",1);
-                      intent.putExtra("type",getIntent().getStringExtra("type"));
+                      intent.putExtra("userType",getIntent().getStringExtra("userType"));
                       intent.putExtra("menuname",getIntent().getStringExtra("menuname"));
                       startActivity(intent);
                       break;
@@ -491,18 +491,19 @@ public class IssueApplicationActivity extends BaseActivity {
                  @Override
                  public void onClick(View view) {
                      Intent intent;
-                     if(getIntent().getStringExtra("type").equals("YP")){
+                     if(getIntent().getStringExtra("userType").equals("YP")){
                          intent=new Intent(IssueApplicationActivity.this,OrderDetailActivity.class);
 
-                     }else   if(getIntent().getStringExtra("type").equals("GC")){
+                     }else   if(getIntent().getStringExtra("userType").equals("GC")){
                          intent=new Intent(IssueApplicationActivity.this,OrderDetailActivity.class);
                      }else {
                          intent=new Intent(IssueApplicationActivity.this,DkDetailsActivity.class);
                      }
+                     intent.putExtra("menuname","明细"+(i+1));
                      intent.putExtra("position",i);
                      intent.putExtra("form",getIntent().getIntExtra("form",2));
                      intent.putExtra("Product",mDatas.get(i));
-                     intent.putExtra("type",getIntent().getStringExtra("type"));
+                     intent.putExtra("userType",getIntent().getStringExtra("userType"));
                      startActivity(intent);
                  }
              });

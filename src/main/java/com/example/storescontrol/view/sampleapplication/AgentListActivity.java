@@ -16,18 +16,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.AgmentBean;
 import com.example.storescontrol.bean.SampleApplicationBean;
-import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

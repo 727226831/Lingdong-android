@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,15 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.Url.iUrl;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.bean.SampleListBean;
-import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.task.TaskActivity;
-import com.example.storescontrol.view.task.TaskListActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -38,15 +33,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class SampleListActivity extends BaseActivity {
     RecyclerView recyclerView;
@@ -256,7 +247,7 @@ public class SampleListActivity extends BaseActivity {
                     sharedPreferences.edit().putBoolean(mDatas.get(i).getS_Code(),true).commit();
                     vh.imageViewTag.setVisibility(View.GONE);
 
-                    if(type==1) {
+
                         Intent intent = new Intent(SampleListActivity.this, IssueApplicationActivity.class);
                         if(listType==0){
                             intent.putExtra("isApproved",false);
@@ -266,16 +257,16 @@ public class SampleListActivity extends BaseActivity {
                         intent.putExtra("SampleApplicationBean", mDatas.get(i));
 
                         if(mDatas.get(i).getS_AppType().equals("样片&评估板")){
-                            intent.putExtra("type","YP");
+                            intent.putExtra("userType","YP");
                         }else   if(mDatas.get(i).getS_AppType().equals("工程品")){
-                            intent.putExtra("type","GC");
+                            intent.putExtra("userType","GC");
                         }else {
-                            intent.putExtra("type","");
+                            intent.putExtra("userType","");
                         }
                         intent.putExtra("form",3);
 
                         startActivity(intent);
-                    }
+
 
 
                 }

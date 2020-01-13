@@ -1,6 +1,5 @@
 package com.example.storescontrol.view.sampleapplication;
 
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -19,9 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.bean.ClientBean;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.ModelBean;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.databinding.ItemModelBinding;
@@ -75,13 +73,13 @@ public class ModelListActivity extends BaseActivity {
         dialog.show();
         JSONObject jsonObject=new JSONObject();
         try {
-            if(getIntent().getStringExtra("type").equals("GC")){
+            if(getIntent().getStringExtra("userType").equals("AC")){
                 jsonObject.put("methodname","Inv");
             }else {
                 jsonObject.put("methodname","InvST");
             }
 
-            jsonObject.put("type",getIntent().getStringExtra("type"));
+            jsonObject.put("type",getIntent().getStringExtra("userType"));
             jsonObject.put("invdefine1",bean.getS_InvDefine1());
             jsonObject.put("keyword",keyword);
 
@@ -149,7 +147,7 @@ public class ModelListActivity extends BaseActivity {
             vh.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(getIntent().getStringExtra("type").equals("GC")){
+                    if(getIntent().getStringExtra("userType").equals("AC")){
                         bean.setS_InvName_AC(mDatas.get(i).getCInvName());
                         bean.setS_InvVersion_AC(mDatas.get(i).getCInvAddCode());
 

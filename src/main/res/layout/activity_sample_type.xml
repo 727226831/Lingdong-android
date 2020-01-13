@@ -10,11 +10,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:fitsSystemWindows="true"
+        android:background="@color/blue"
         tools:context=".view.PutListActivity">
         <include
             android:id="@+id/l_title"
             layout="@layout/layout_title"/>
        <android.support.v7.widget.RecyclerView
+           android:background="@color/white"
            android:id="@+id/rv_list"
            android:layout_width="match_parent"
            android:layout_height="match_parent"/>

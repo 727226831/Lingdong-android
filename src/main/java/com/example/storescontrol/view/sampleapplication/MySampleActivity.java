@@ -20,14 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storescontrol.R;
-import com.example.storescontrol.Url.Request;
-import com.example.storescontrol.Url.Untils;
-import com.example.storescontrol.Url.iUrl;
+import com.example.storescontrol.url.Request;
+import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.bean.SampleListBean;
-import com.example.storescontrol.bean.TaskBean;
 import com.example.storescontrol.view.BaseActivity;
-import com.example.storescontrol.view.task.TaskActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -36,15 +33,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MySampleActivity extends BaseActivity {
     RecyclerView recyclerView;
@@ -274,38 +267,38 @@ public class MySampleActivity extends BaseActivity {
                     sharedPreferences.edit().putBoolean(mDatas.get(i).getS_Code(),true).commit();
                     vh.imageViewTag.setVisibility(View.GONE);
 
-                    if(type==1) {
+
                         Intent intent = new Intent(MySampleActivity.this, IssueApplicationActivity.class);
 
-                         switch (listType){
+                         switch (listType) {
                              case 0:
                                  mDatas.get(i).setS_State("未提交");
-                                 intent.putExtra("isApproved",false);
+                                 intent.putExtra("isApproved", false);
                                  break;
                              case 1:
                                  mDatas.get(i).setS_State("审核中");
-                                 intent.putExtra("isApproved",true);
+                                 intent.putExtra("isApproved", true);
                                  break;
                              case 2:
                                  mDatas.get(i).setS_State("已审核");
-                                 intent.putExtra("isApproved",false);
+                                 intent.putExtra("isApproved", false);
                                  break;
                          }
                         intent.putExtra("SampleApplicationBean", mDatas.get(i));
                         intent.putExtra("form",3);
                         if(mDatas.get(i).getS_AppType().equals("样片&评估板")){
-                            intent.putExtra("type","YP");
+                            intent.putExtra("userType","YP");
                         }else   if(mDatas.get(i).getS_AppType().equals("工程品")){
-                            intent.putExtra("type","GC");
+                            intent.putExtra("userType","GC");
                         }else {
-                            intent.putExtra("type","");
+                            intent.putExtra("userType","");
                         }
 
                         startActivity(intent);
                     }
 
 
-                }
+
             });
 
 

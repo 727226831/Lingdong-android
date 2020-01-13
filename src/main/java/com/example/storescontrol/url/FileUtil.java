@@ -1,4 +1,4 @@
-package com.example.storescontrol.Url;
+package com.example.storescontrol.url;
 
 import android.content.ContentUris;
 import android.content.Context;
