@@ -356,7 +356,7 @@ public class IssueApplicationActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             FileAdapter functionAdapter=new FileAdapter(stringList);
-            binding.rvListFile.setLayoutManager(new GridLayoutManager(IssueApplicationActivity.this,1));
+            binding.rvListFile.setLayoutManager(new GridLayoutManager(IssueApplicationActivity.this,5));
             binding.rvListFile.setAdapter(functionAdapter);
             functionAdapter.notifyDataSetChanged();
         }

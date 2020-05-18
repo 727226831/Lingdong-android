@@ -63,6 +63,7 @@ public class FamilyListActivity extends BaseActivity {
             }
         });
         getData("");
+
     }
     private void getData(String keyword) {
         dialog.show();
@@ -88,6 +89,7 @@ public class FamilyListActivity extends BaseActivity {
                     if(response.code()==200) {
                         String result=response.body().string();
                         agmentBean =new Gson().fromJson(result, AgmentBean.class);
+
                         if(agmentBean.getResultcode().equals("200")){
                             functionAdapter=new FunctionAdapter(agmentBean.getData());
                         }else {

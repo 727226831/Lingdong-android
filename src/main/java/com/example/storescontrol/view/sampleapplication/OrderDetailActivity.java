@@ -20,7 +20,7 @@ import com.example.storescontrol.view.BaseActivity;
 public class OrderDetailActivity extends BaseActivity {
       ActivityOrderDetailBinding binding;
       SampleApplicationBean.Product bean;
-      String[] stringsField=new String[]{"车用电子","工业及电机","家电及医疗","消费及玩具","手机周边","显示及人机界面","其他"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class OrderDetailActivity extends BaseActivity {
         binding.tvDescription.setOnClickListener(onClickListener);
         binding.tvModelAC.setOnClickListener(onClickListener);
         binding.bSubmit.setOnClickListener(onClickListener);
+        binding.tvFunctiondescription.setOnClickListener(onClickListener);
 
         if(getIntent().getStringExtra("userType").equals("GC")){
           binding.lInvNameAC.setVisibility(View.VISIBLE);
@@ -110,6 +111,26 @@ public class OrderDetailActivity extends BaseActivity {
                 Untils.setProductBean(OrderDetailActivity.this,product);
             }
         });
+        binding.etFunctionDescription.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                SampleApplicationBean.Product product=Untils.getProductBean(OrderDetailActivity.this);
+                product.setS_FunctionDescription(editable.toString());
+                Untils.setProductBean(OrderDetailActivity.this,product);
+            }
+        });
+
+
     }
     View.OnClickListener onClickListener=new View.OnClickListener() {
         @Override
@@ -141,18 +162,10 @@ public class OrderDetailActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.tv_field:
-                    AlertDialog.Builder builder=new AlertDialog.Builder(OrderDetailActivity.this);
-                    builder.setTitle("请选择应用领域：").setSingleChoiceItems(stringsField, 0, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.i("switch",stringsField[which]);
-                            SampleApplicationBean.Product product=Untils.getProductBean(OrderDetailActivity.this);
-                            product.setS_ApplicationArea(stringsField[which]);
-                            Untils.setProductBean(OrderDetailActivity.this,product);
-                             binding.setBean(product);
-                            dialog.dismiss();
-                        }
-                    }).show();
+
+                    intent=new Intent(OrderDetailActivity.this, ApplicationFieldActivity.class);
+                    intent.putExtra("key","Define29");
+                    startActivity(intent);
                     break;
                 case R.id.tv_description:
                     if(binding.tvField.getText().equals("")){
@@ -161,6 +174,16 @@ public class OrderDetailActivity extends BaseActivity {
                     }
                     intent=new Intent(OrderDetailActivity.this, DescriptionListActivity.class);
                     intent.putExtra("userType",getIntent().getStringExtra("userType"));
+                    startActivity(intent);
+                    break;
+                case R.id.tv_functiondescription:
+                    if(binding.tvField.getText().equals("")){
+                        Toast.makeText(OrderDetailActivity.this, "请先选择应用领域", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    intent=new Intent(OrderDetailActivity.this, ApplicationFieldActivity.class);
+                    intent.putExtra("key","Define31");
+                    intent.putExtra("applicationarea",binding.tvField.getText().toString());
                     startActivity(intent);
                     break;
                 case R.id.b_submit:
@@ -205,6 +228,11 @@ public class OrderDetailActivity extends BaseActivity {
         super.onStart();
         SampleApplicationBean.Product product=Untils.getProductBean(OrderDetailActivity.this);
         binding.setBean(product);
+        if(product.getS_FunctionDescription()!=null){
+            if(product.getS_FunctionDescription().equals("其他")){
+                binding.etFunctionDescription.setVisibility(View.VISIBLE);
+            }
+        }
 
     }
 }

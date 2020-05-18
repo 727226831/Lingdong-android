@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -90,6 +91,7 @@ public class AgentListActivity extends BaseActivity {
                         String result=response.body().string();
                         agmentBean =new Gson().fromJson(result, AgmentBean.class);
                         if(agmentBean.getResultcode().equals("200")){
+
                             functionAdapter=new FunctionAdapter(agmentBean.getData());
 
                         }else {

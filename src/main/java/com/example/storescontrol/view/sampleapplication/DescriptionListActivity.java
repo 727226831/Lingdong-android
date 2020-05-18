@@ -44,6 +44,7 @@ public class DescriptionListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_list);
+
         Untils.initTitle("应用描述列表",this);
         recyclerView=findViewById(R.id.rv_list);
        bean=Untils.getProductBean(DescriptionListActivity.this);

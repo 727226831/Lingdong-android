@@ -121,11 +121,34 @@ public class DkDetailsActivity extends BaseActivity {
                 Untils.setProductBean(DkDetailsActivity.this,product);
             }
         });
+        binding.etFunctionDescription.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                SampleApplicationBean.Product product=Untils.getProductBean(DkDetailsActivity.this);
+                product.setS_FunctionDescription(editable.toString());
+                Untils.setProductBean(DkDetailsActivity.this,product);
+            }
+        });
     }
     @Override
     protected void onStart() {
         super.onStart();
         SampleApplicationBean.Product product=Untils.getProductBean(DkDetailsActivity.this);
+        if(product.getS_FunctionDescription()!=null){
+            if(product.getS_FunctionDescription().equals("其他")){
+                binding.etFunctionDescription.setVisibility(View.VISIBLE);
+            }
+        }
         binding.setBean(product);
 
     }
@@ -141,18 +164,9 @@ public class DkDetailsActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.tv_field:
-                    AlertDialog.Builder builder=new AlertDialog.Builder(DkDetailsActivity.this);
-                    builder.setTitle("请选择应用领域：").setSingleChoiceItems(stringsField, 0, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.i("switch",stringsField[which]);
-                            SampleApplicationBean.Product product=Untils.getProductBean(DkDetailsActivity.this);
-                            product.setS_ApplicationArea(stringsField[which]);
-                            Untils.setProductBean(DkDetailsActivity.this,product);
-                            binding.setBean(product);
-                            dialog.dismiss();
-                        }
-                    }).show();
+                    intent=new Intent(DkDetailsActivity.this, ApplicationFieldActivity.class);
+                    intent.putExtra("key","Define29");
+                    startActivity(intent);
                     break;
                 case R.id.tv_description:
                     if(binding.tvField.getText().equals("")){
@@ -161,6 +175,16 @@ public class DkDetailsActivity extends BaseActivity {
                     }
                     intent=new Intent(DkDetailsActivity.this, DescriptionListActivity.class);
                     intent.putExtra("userType",getIntent().getStringExtra("userType"));
+                    startActivity(intent);
+                    break;
+                case R.id.tv_functiondescription:
+                    if(binding.tvField.getText().equals("")){
+                        Toast.makeText(DkDetailsActivity.this, "请先选择应用领域", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    intent=new Intent(DkDetailsActivity.this, ApplicationFieldActivity.class);
+                    intent.putExtra("key","Define31");
+                    intent.putExtra("applicationarea",binding.tvField.getText().toString());
                     startActivity(intent);
                     break;
 

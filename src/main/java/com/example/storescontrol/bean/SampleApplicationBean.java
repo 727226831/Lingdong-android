@@ -408,6 +408,16 @@ public class SampleApplicationBean implements Parcelable {
         String S_UsePrice;
         String S_Memo1;
 
+        public String getS_FunctionDescription() {
+            return S_FunctionDescription;
+        }
+
+        public void setS_FunctionDescription(String s_FunctionDescription) {
+            S_FunctionDescription = s_FunctionDescription;
+        }
+
+        String S_FunctionDescription;
+
 
 
         public String getS_Memo1() {
@@ -461,6 +471,7 @@ public class SampleApplicationBean implements Parcelable {
             dest.writeString(this.S_UseQty);
             dest.writeString(this.S_UsePrice);
             dest.writeString(this.S_Memo1);
+            dest.writeString(this.S_FunctionDescription);
             dest.writeString(this.S_Memo2);
             dest.writeString(this.S_Memo3);
         }
@@ -479,6 +490,7 @@ public class SampleApplicationBean implements Parcelable {
             this.S_UseQty = in.readString();
             this.S_UsePrice = in.readString();
             this.S_Memo1 = in.readString();
+            this.S_FunctionDescription = in.readString();
             this.S_Memo2 = in.readString();
             this.S_Memo3 = in.readString();
         }

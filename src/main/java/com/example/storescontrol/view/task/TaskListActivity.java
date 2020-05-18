@@ -72,7 +72,7 @@ public class TaskListActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                getData(listType,editable.toString());
+                getData(editable.toString());
 
             }
         });
@@ -81,7 +81,9 @@ public class TaskListActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                getData(tab.getPosition(),"");
+                listType=tab.getPosition();
+                getData("");
+
 
             }
 
@@ -110,7 +112,7 @@ public class TaskListActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-       getData(listType,"");
+       getData("");
     }
 
     @Override
@@ -118,15 +120,15 @@ public class TaskListActivity extends BaseActivity {
         super.onResume();
     }
 
-    private void getData(final int type,String keyword) {
-         listType=type;
+    private void getData(String keyword) {
+
 
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("usercode",acccode);
 
             jsonObject.put("methodname","PriceAuditList");
-            switch (type){
+            switch (listType){
                 case 0:
                     jsonObject.put("auditstatus","待审批");
                     break;
@@ -168,10 +170,14 @@ public class TaskListActivity extends BaseActivity {
                         }
 
                         if(taskBean.getResultcode().equals("200")){
-                            if(type==0){
-                                tabLayout.getTabAt(0).setText("待审批("+taskBean.getData().size()+")");
-                            }else if(type==1) {
-                                tabLayout.getTabAt(1).setText("已审批("+taskBean.getData().size()+")");
+
+                            switch (listType){
+                                case 0:
+                                    tabLayout.getTabAt(0).setText("待审批("+taskBean.getData().size()+")");
+                                    break;
+                                case  1:
+                                    tabLayout.getTabAt(1).setText("已审批("+taskBean.getData().size()+")");
+                                    break;
                             }
 
                             initAdapter(taskBean.getData());
@@ -256,7 +262,7 @@ public class TaskListActivity extends BaseActivity {
 
                         Intent intent = new Intent(TaskListActivity.this, TaskActivity.class);
                         intent.putExtra("taskBean", mDatas.get(i));
-                        if(acccode.equals("15")){
+                        if(acccode.equals("15") && listType==1){
                             intent.putExtra("userType",-1);
                         }else {
                             intent.putExtra("userType",listType);

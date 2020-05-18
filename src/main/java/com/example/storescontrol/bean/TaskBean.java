@@ -56,6 +56,26 @@ public class TaskBean implements Parcelable {
         private String S_Qty;
         private String P_Id;
 
+        public String getS_FunctionDescription() {
+            return S_FunctionDescription;
+        }
+
+        public void setS_FunctionDescription(String s_FunctionDescription) {
+            S_FunctionDescription = s_FunctionDescription;
+        }
+
+        private String S_FunctionDescription;
+
+        public String getS_MinQty() {
+            return S_MinQty;
+        }
+
+        public void setS_MinQty(String s_MinQty) {
+            S_MinQty = s_MinQty;
+        }
+
+        private String S_MinQty;
+
         public String getM_MSN() {
             return M_MSN;
         }
@@ -293,6 +313,8 @@ public class TaskBean implements Parcelable {
             dest.writeString(this.S_UseQty);
             dest.writeString(this.S_Qty);
             dest.writeString(this.P_Id);
+            dest.writeString(this.S_FunctionDescription);
+            dest.writeString(this.S_MinQty);
             dest.writeString(this.M_MSN);
             dest.writeString(this.P_RowNo);
             dest.writeString(this.S_Id);
@@ -321,6 +343,8 @@ public class TaskBean implements Parcelable {
             this.S_UseQty = in.readString();
             this.S_Qty = in.readString();
             this.P_Id = in.readString();
+            this.S_FunctionDescription = in.readString();
+            this.S_MinQty = in.readString();
             this.M_MSN = in.readString();
             this.P_RowNo = in.readString();
             this.S_Id = in.readString();

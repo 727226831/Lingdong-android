@@ -20,6 +20,7 @@ import com.example.storescontrol.url.iUrl;
 import com.example.storescontrol.databinding.ActivityLoginBinding;
 import com.google.gson.Gson;
 import com.igexin.sdk.PushManager;
+import com.igexin.sdk.Tag;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -123,6 +124,7 @@ public class LoginActivity extends BaseActivity {
             jsonObject.put("methodname","UserLogin");
             jsonObject.put("usercode",activityLoginBinding.etUsername.getText().toString());
             jsonObject.put("userpassword",activityLoginBinding.etPassword.getText().toString());
+            jsonObject.put("clientid",PushManager.getInstance().getClientid(LoginActivity.this));
             if(sharedPreferences.getBoolean("isAgent",false)){
                 jsonObject.put("type","agent");
             }else {
@@ -168,6 +170,10 @@ public class LoginActivity extends BaseActivity {
                                 editor.commit();
 
                                 PushManager.getInstance().bindAlias(LoginActivity.this,resultBean.getAcccode(),"alias");
+
+
+
+
                                 if(!resultBean.getVersionNumber().equals(BuildConfig.VERSION_NAME)){
                                     downloadByWeb(LoginActivity.this,Request.URL+"/AppUpgrade/MMS_"+resultBean.getVersionNumber()+".apk");
                                 }else {
