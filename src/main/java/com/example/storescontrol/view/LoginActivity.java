@@ -3,13 +3,15 @@ package com.example.storescontrol.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.databinding.DataBindingUtil;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.example.storescontrol.BuildConfig;
 import com.example.storescontrol.R;
@@ -39,7 +41,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       activityLoginBinding=DataBindingUtil.setContentView(this,R.layout.activity_login);
+       activityLoginBinding= DataBindingUtil.setContentView(this,R.layout.activity_login);
 
 
        sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);

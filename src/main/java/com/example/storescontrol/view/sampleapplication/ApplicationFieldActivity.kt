@@ -1,9 +1,7 @@
 package com.example.storescontrol.view.sampleapplication
 
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -13,6 +11,9 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.storescontrol.R
 import com.example.storescontrol.bean.AgmentBean
 import com.example.storescontrol.bean.FieldBean
@@ -84,6 +85,7 @@ class ApplicationFieldActivity : BaseActivity() {
                 try {
                     if (response.code() == 200) {
                         val result = response.body()!!.string()
+
                        fieldBean= Gson().fromJson(result, FieldBean::class.java)
 
                         if (fieldBean!!.Resultcode == "200") {

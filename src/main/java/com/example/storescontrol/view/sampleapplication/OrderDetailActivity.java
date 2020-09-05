@@ -1,15 +1,15 @@
 package com.example.storescontrol.view.sampleapplication;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.example.storescontrol.R;
 import com.example.storescontrol.url.Untils;

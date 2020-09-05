@@ -19,7 +19,7 @@
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:padding="10dp"
         android:background="@color/white"
         android:layout_below="@id/et_search"
@@ -27,5 +27,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

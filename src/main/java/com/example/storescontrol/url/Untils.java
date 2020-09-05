@@ -13,11 +13,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.storescontrol.R;
 import com.example.storescontrol.bean.SampleApplicationBean;
-import com.example.storescontrol.view.sampleapplication.ApplicationFieldActivity;
+
 import com.google.gson.Gson;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.FileInputStream;
 import java.io.IOException;

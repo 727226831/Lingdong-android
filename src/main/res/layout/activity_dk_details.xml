@@ -122,6 +122,37 @@
                 <TextView
 
                     android:layout_margin="@dimen/layout_margin"
+                    android:text="*功能描述"
+                    style="@style/item_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:hint="请选择"
+                    android:text="@{bean.s_FunctionDescription}"
+                    android:layout_alignParentRight="true"
+
+                    style="@style/Text_selector"
+                    android:id="@+id/tv_functiondescription"
+                    />
+            </RelativeLayout>
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/etFunctionDescription"
+                android:text="@{bean.s_FunctionDescription}"
+                android:hint="请输入"
+                android:padding="5dp"
+                android:gravity="start"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_border"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:layout_margin="@dimen/layout_margin"
                     android:text="*应用描述"
                     style="@style/item_normal"
                     android:layout_width="wrap_content"

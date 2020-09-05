@@ -135,7 +135,7 @@
                     android:text="@{bean.s_ContactAddress}"
                     />
             </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
@@ -224,7 +224,7 @@
                     />
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_listFile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>

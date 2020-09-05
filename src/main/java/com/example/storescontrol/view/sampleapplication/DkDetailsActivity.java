@@ -1,9 +1,7 @@
 package com.example.storescontrol.view.sampleapplication;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,7 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.example.storescontrol.R;
+
 import com.example.storescontrol.url.Untils;
 import com.example.storescontrol.bean.SampleApplicationBean;
 import com.example.storescontrol.databinding.ActivityDkDetailsBinding;
@@ -121,6 +122,7 @@ public class DkDetailsActivity extends BaseActivity {
                 Untils.setProductBean(DkDetailsActivity.this,product);
             }
         });
+
         binding.etFunctionDescription.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -167,6 +169,7 @@ public class DkDetailsActivity extends BaseActivity {
                     intent=new Intent(DkDetailsActivity.this, ApplicationFieldActivity.class);
                     intent.putExtra("key","Define29");
                     startActivity(intent);
+
                     break;
                 case R.id.tv_description:
                     if(binding.tvField.getText().equals("")){

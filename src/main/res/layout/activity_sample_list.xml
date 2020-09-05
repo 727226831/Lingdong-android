@@ -12,7 +12,7 @@
         android:id="@+id/l_title"
         layout="@layout/layout_title"/>
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:background="@color/white"
         app:tabSelectedTextColor="@color/blue"
         app:tabIndicatorColor="@color/blue"
@@ -22,18 +22,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/ti_unfinished"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="待审批"/>
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/ti_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="已审批"/>
 
-    </android.support.design.widget.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
     <EditText
         android:background="@color/white"
@@ -43,11 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:background="@color/white"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
