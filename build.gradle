@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 
 android {
@@ -33,7 +35,7 @@ android {
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 //apk_地区名-版本号-版本名称-编译时间.apk
-                def fileName = "MMS_${defaultConfig.versionName}.apk"
+                def fileName = "lingdong_${defaultConfig.versionName}.apk"
                 outputFileName = fileName
             }
         }
@@ -75,6 +77,11 @@ dependencies {
 //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
     implementation files('libs/QR285Printer_sdk_20181206.jar')
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
+}
+repositories {
+    mavenCentral()
 }
